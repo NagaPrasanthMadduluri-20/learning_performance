@@ -33,7 +33,7 @@ const CourseBanner = ({ CourseBannerData, additionalData }) => {
   ].includes(page_name);
   const pagePMI = page_name == "PMI-ACP Exam Prep" ? true : false;
   const pageRFF = page_name == "Project Management Fundamentals" ? true : false;
-const data = contents.course_content;
+
   return (
     <div className="relative">
       {/* <div
@@ -49,13 +49,10 @@ const data = contents.course_content;
           <div className="grid grid-cols-12 relative z-10 text-primary-foreground sm:text-foreground">
             <div className="space-y-4 md:col-span-7 col-span-12">
               <Text variant="h1" className="max-w-[600px]">
-                {contents.course_secondary_title}
+                HELLO, I AM HEADING
               </Text>
 
-             <div
-              className="info-description"
-              dangerouslySetInnerHTML={{ __html: data}}
-            />
+              <Text className="">HI, I am Content</Text>
               <div className="flex-col sm:flex sm:flex-row sm:gap-x-5 ">
                 <ScrollButton
                   variant="secondary"
@@ -87,7 +84,6 @@ const data = contents.course_content;
                     <StarRating rating={Number(contents.course_rating_value)} />
                     <Text className="ml-2">
                       {contents.course_rating_content}
-                   
                     </Text>
                   </div>
                   <Text className="flex gap-x-2">
@@ -135,7 +131,7 @@ const data = contents.course_content;
                   </div>
                 ))}
 
-                {textAccreditations.map((item, index) => (
+                {/* {textAccreditations.map((item, index) => (
                   <div
                     className="row-span-1 col-span-1 hidden md:block w-[80%]"
                     key={index}
@@ -150,7 +146,7 @@ const data = contents.course_content;
                       <Avatar src={item.Accrediations} key={index} />
                     )}
                   </div>
-                ))}
+                ))} */}
 
                 {contents.Pay_Once_Attend_Twice !== "disable" && (
                   <div className="row-span-1 col-span-3 hidden md:block">
