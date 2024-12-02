@@ -33,7 +33,7 @@ const CourseBanner = ({ CourseBannerData, additionalData }) => {
   ].includes(page_name);
   const pagePMI = page_name == "PMI-ACP Exam Prep" ? true : false;
   const pageRFF = page_name == "Project Management Fundamentals" ? true : false;
-
+const data = contents.course_content;
   return (
     <div className="relative">
       {/* <div
@@ -52,7 +52,10 @@ const CourseBanner = ({ CourseBannerData, additionalData }) => {
                 {contents.course_secondary_title}
               </Text>
 
-              <Text className="">{contents.course_content}</Text>
+             <div
+              className="info-description"
+              dangerouslySetInnerHTML={{ __html: data}}
+            />
               <div className="flex-col sm:flex sm:flex-row sm:gap-x-5 ">
                 <ScrollButton
                   variant="secondary"
@@ -84,6 +87,7 @@ const CourseBanner = ({ CourseBannerData, additionalData }) => {
                     <StarRating rating={Number(contents.course_rating_value)} />
                     <Text className="ml-2">
                       {contents.course_rating_content}
+                   
                     </Text>
                   </div>
                   <Text className="flex gap-x-2">
