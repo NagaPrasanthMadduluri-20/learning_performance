@@ -14,24 +14,20 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
-import Select from "react-select";
 import { Loader } from "lucide-react";
-import { Toaster } from "@/components/ui/toaster";
 import { useToast } from "@/components/ui/use-toast";
-import React, { useState } from "react";
+import React, { lazy, Suspense, useState } from "react";
 import { options } from "@/data/options";
 import { getFormSchema } from "@/lib/formschema";
 import Container from "@/components/Container";
 import Text from "@/components/Text";
 import { PhoneNumberInput } from "@/app/components/EnquiryForm/PhoneNumberInput";
-const customStyles = {
-  control: (provided, state) => ({
-    ...provided,
-    backgroundColor: state.isFocused,
-  }),
-};
-const InquireAboutForm = ({ formType }) => {
 
+// Dynamically import react-select
+const Select = lazy(() => import("react-select"));
+
+const InquireAboutForm = ({ formType }) => {
+  const [isSelectLoaded, setIsSelectLoaded] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
@@ -50,8 +46,21 @@ const InquireAboutForm = ({ formType }) => {
     resolver: zodResolver(schema),
     defaultValues,
   });
+  // Custom styles with lazy loading consideration
+  const customStyles = {
+    control: (provided, state) => ({
+      ...provided,
+      backgroundColor: state.isFocused ? "white" : "transparent",
+    }),
+  };
 
   const onSubmit = async (data) => {
+    // Dynamically import both the component and its styles
+    if (!isSelectLoaded) {
+      await Promise.all([import("react-select")]);
+      setIsSelectLoaded(true);
+    }
+
     setIsSubmitting(true);
     try {
       await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -149,20 +158,36 @@ const InquireAboutForm = ({ formType }) => {
                 control={form.control}
                 render={({ field }) => (
                   <FormItem>
-                    <Select
-                      {...field}
-                      options={options}
-                      isMulti={true}
-                      placeholder="Select Course (s)*"
-                      className="rounded-2xl h-auto py-1 font-montserrat text-[14px] !dark:bg-background"
-                      instanceId="select-course"
-                      styles={customStyles}
-                    />
+                    <Suspense
+                      fallback={
+                        <select className="border-2 border-gray-200 h-11 focus-visible:ring-0 focus-visible:ring-offset-0 py-0 px-2 w-full text-[14px] font-montserrat rounded-md text-gray-500">
+                          <option value="" disabled>
+                            Select Course(s)*
+                          </option>
+                        </select>
+                      }
+                    >
+                      <Select
+                        {...field}
+                        options={options}
+                        isMulti={true}
+                        placeholder="Select Course (s)*"
+                        className="rounded-2xl h-auto py-1 font-montserrat text-[14px] !dark:bg-background"
+                        instanceId="select-course"
+                        styles={customStyles}
+                        // Optional: Load styles when interacted
+                        onMenuOpen={async () => {
+                          if (!isSelectLoaded) {
+                            setIsSelectLoaded(true);
+                          }
+                        }}
+                      />
+                    </Suspense>
                     <FormMessage className="text-[12px] !mt-0" />
                   </FormItem>
                 )}
               />
-           
+
               <FormField
                 control={form.control}
                 name="SelectOption"
@@ -187,24 +212,23 @@ const InquireAboutForm = ({ formType }) => {
                   </FormItem>
                 )}
               />
-                
             </div>
             <FormField
-                control={form.control}
-                name="message"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <Textarea
-                        placeholder="Tell us about your requirements"
-                        className="min-h-[80px] mt-7"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage className="text-[12px] !mt-0" />
-                  </FormItem>
-                )}
-              />
+              control={form.control}
+              name="message"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Textarea
+                      placeholder="Tell us about your requirements"
+                      className="min-h-[80px] mt-7"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage className="text-[12px] !mt-0" />
+                </FormItem>
+              )}
+            />
 
             <FormField
               control={form.control}

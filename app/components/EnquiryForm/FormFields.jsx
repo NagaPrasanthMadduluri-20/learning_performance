@@ -18,16 +18,21 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
-import Select from "react-select";
 import { Loader } from "lucide-react";
 import { Toaster } from "@/components/ui/toaster";
 import { useToast } from "@/components/ui/use-toast";
-import React, { useState } from "react";
+import React, { lazy, Suspense, useState } from "react";
 import { options } from "@/data/options";
 import { getFormSchema } from "@/lib/formschema";
 import { PhoneNumberInput } from "./PhoneNumberInput";
 
+
+
+// Dynamically import react-select
+const Select = lazy(() => import("react-select"));
+
 const FormFields = ({ formType, isIndividual, defaultselectcourse }) => {
+  const [isSelectLoaded, setIsSelectLoaded] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
@@ -58,7 +63,20 @@ const FormFields = ({ formType, isIndividual, defaultselectcourse }) => {
     defaultValues,
   });
 
+    // Custom styles with lazy loading consideration
+    const customStyles = {
+      control: (provided, state) => ({
+        ...provided,
+        backgroundColor: state.isFocused ? "white" : "transparent",
+      }),
+    };
+
   const onSubmit = async (data) => {
+       // Dynamically import both the component and its styles
+       if (!isSelectLoaded) {
+        await Promise.all([import("react-select")]);
+        setIsSelectLoaded(true);
+      }
     setIsSubmitting(true);
     try {
       await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -214,6 +232,15 @@ const FormFields = ({ formType, isIndividual, defaultselectcourse }) => {
                 control={form.control}
                 render={({ field }) => (
                   <FormItem>
+                     <Suspense
+                      fallback={
+                        <select className="border-2 border-gray-200 h-11 focus-visible:ring-0 focus-visible:ring-offset-0 py-0 px-2 w-full text-[14px] font-montserrat rounded-md text-gray-500">
+                          <option value="" disabled>
+                            Select Course(s)*
+                          </option>
+                        </select>
+                      }
+                    >
                     <Select
                       {...field}
                       options={options}
@@ -225,7 +252,14 @@ const FormFields = ({ formType, isIndividual, defaultselectcourse }) => {
                       onChange={(selectedOptions) =>
                         field.onChange(selectedOptions)
                       }
+                       // Optional: Load styles when interacted
+                       onMenuOpen={async () => {
+                        if (!isSelectLoaded) {
+                          setIsSelectLoaded(true);
+                        }
+                      }}
                     />
+                    </Suspense>
                     <FormMessage className="text-[12px] !mt-0" />
                   </FormItem>
                 )}

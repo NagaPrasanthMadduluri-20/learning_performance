@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
-import Select from "react-select";
+//import Select from "react-select";
 import { CalendarIcon, Loader } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import { options } from "@/data/options";
@@ -25,14 +25,13 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { format } from "date-fns";
 import { PhoneNumberInput } from "@/app/components/EnquiryForm/PhoneNumberInput";
-import { useState, useRef, useEffect } from "react";
-const customStyles = {
-  control: (provided, state) => ({
-    ...provided,
-    backgroundColor: state.isFocused,
-  }),
-};
+import { useState, useRef, useEffect, lazy, Suspense } from "react";
+
+// Dynamically import react-select
+const Select = lazy(() => import("react-select"));
+
 const RequestCallBackForm = ({ formType }) => {
+  const [isSelectLoaded, setIsSelectLoaded] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const calendarRef = useRef(null);
@@ -58,7 +57,22 @@ const RequestCallBackForm = ({ formType }) => {
     defaultValues,
   });
 
+  // Custom styles with lazy loading consideration
+  const customStyles = {
+    control: (provided, state) => ({
+      ...provided,
+      backgroundColor: state.isFocused ? "white" : "transparent",
+    }),
+  };
+
   const onSubmit = async (data) => {
+    // Dynamically import both the component and its styles
+    if (!isSelectLoaded) {
+      await Promise.all([
+        import("react-select"),
+      ]);
+      setIsSelectLoaded(true);
+    }
     setIsSubmitting(true);
     try {
       await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -273,6 +287,15 @@ const RequestCallBackForm = ({ formType }) => {
                 control={form.control}
                 render={({ field }) => (
                   <FormItem>
+                     <Suspense
+                      fallback={
+                        <select className="border-2 border-gray-200 h-11 focus-visible:ring-0 focus-visible:ring-offset-0 py-0 px-2 w-full text-[14px] font-montserrat rounded-md text-gray-500">
+                          <option value="" disabled>
+                            Select Course(s)*
+                          </option>
+                        </select>
+                      }
+                    >
                     <Select
                       {...field}
                       options={options}
@@ -281,7 +304,14 @@ const RequestCallBackForm = ({ formType }) => {
                       className="rounded-2xl h-11 py-1 font-montserrat text-[14px] dark:bg-background"
                       instanceId="select-course"
                       styles={customStyles}
+                      // Optional: Load styles when interacted
+                      onMenuOpen={async () => {
+                        if (!isSelectLoaded) {
+                          setIsSelectLoaded(true);
+                        }
+                      }}
                     />
+                    </Suspense>
                     <FormMessage className="text-[12px] !mt-0" />
                   </FormItem>
                 )}
@@ -377,6 +407,15 @@ const RequestCallBackForm = ({ formType }) => {
                 name="time"
                 render={({ field }) => (
                   <FormItem>
+                     <Suspense
+                      fallback={
+                        <select className="border-2 border-gray-200 h-11 focus-visible:ring-0 focus-visible:ring-offset-0 py-0 px-2 w-full text-[14px] font-montserrat rounded-md text-gray-500">
+                          <option value="" disabled>
+                          time
+                          </option>
+                        </select>
+                      }
+                    >
                     <Select
                       {...field}
                       options={timeOptions}
@@ -384,7 +423,14 @@ const RequestCallBackForm = ({ formType }) => {
                       className="rounded-2xl h-11 py-1 font-montserrat text-[14px] dark:bg-background"
                       instanceId="select-time"
                       styles={customStyles}
+                      // Optional: Load styles when interacted
+                      onMenuOpen={async () => {
+                        if (!isSelectLoaded) {
+                          setIsSelectLoaded(true);
+                        }
+                      }}
                     />
+                    </Suspense>
                     <FormMessage className="text-[12px] !mt-0" />
                   </FormItem>
                 )}
@@ -395,6 +441,15 @@ const RequestCallBackForm = ({ formType }) => {
                 control={form.control}
                 render={({ field }) => (
                   <FormItem>
+                     <Suspense
+                      fallback={
+                        <select className="border-2 border-gray-200 h-11 focus-visible:ring-0 focus-visible:ring-offset-0 py-0 px-2 w-full text-[14px] font-montserrat rounded-md text-gray-500">
+                          <option value="" disabled>
+                          Select Timezone*
+                          </option>
+                        </select>
+                      }
+                    >
                     <Select
                       {...field}
                       options={timezones}
@@ -402,7 +457,14 @@ const RequestCallBackForm = ({ formType }) => {
                       className="rounded-2xl h-11 py-1 font-montserrat text-[14px] dark:bg-background"
                       instanceId="select-timezone"
                       styles={customStyles}
+                      // Optional: Load styles when interacted
+                      onMenuOpen={async () => {
+                        if (!isSelectLoaded) {
+                          setIsSelectLoaded(true);
+                        }
+                      }}
                     />
+                    </Suspense>
                     <FormMessage className="text-[12px] !mt-0" />
                   </FormItem>
                 )}

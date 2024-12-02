@@ -15,7 +15,7 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { MoveRight } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import { getFormSchema } from "@/lib/formschema";
 import {
   AlternatePhoneInput,
@@ -23,7 +23,6 @@ import {
 } from "@/app/components/EnquiryForm/PhoneNumberInput";
 import Container from "@/components/Container";
 import Text from "@/components/Text";
-import Select from "react-select";
 import { Toaster } from "@/components/ui/toaster";
 import { Card, CardContent } from "@/components/ui/card";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -51,16 +50,12 @@ const workpositions = [
 //   { value: "Chennai", label: "Chennai" },
 // ];
 
-const customStyles = {
-  control: (provided, state) => ({
-    ...provided,
-    backgroundColor: state.isFocused,
-    border: state.isFocused
-      ? "0px solid #ccc focus-visible:ring-0 focus-visible:ring-offset-0"
-      : "border-2 border-gray-200",
-  }),
-};
+
+// Dynamically import react-select
+const Select = lazy(() => import("react-select"));
+
 const OrderSummaryForm = ({ formType, cartvalue,  proforma}) => {
+  const [isSelectLoaded, setIsSelectLoaded] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState(null);
@@ -122,7 +117,22 @@ const OrderSummaryForm = ({ formType, cartvalue,  proforma}) => {
     mode: "onChange",
   });
 
+  const customStyles = {
+    control: (provided, state) => ({
+      ...provided,
+      backgroundColor: state.isFocused,
+      border: state.isFocused
+        ? "0px solid #ccc focus-visible:ring-0 focus-visible:ring-offset-0"
+        : "border-2 border-gray-200",
+    }),
+  };
+
   const onSubmit = async (data) => {
+      // Dynamically import both the component and its styles
+      if (!isSelectLoaded) {
+        await Promise.all([import("react-select")]);
+        setIsSelectLoaded(true);
+      }
     setIsSubmitting(true);
     try {
       await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -258,6 +268,15 @@ const OrderSummaryForm = ({ formType, cartvalue,  proforma}) => {
                     control={form.control}
                     render={({ field }) => (
                       <FormItem>
+                        <Suspense
+                      fallback={
+                        <select className="border-2 border-gray-200 h-11 focus-visible:ring-0 focus-visible:ring-offset-0 py-0 px-2 w-full text-[14px] font-montserrat rounded-md text-gray-500">
+                          <option value="" disabled>
+                          Select the country*
+                          </option>
+                        </select>
+                      }
+                    >
                         <Select
                           {...field}
                           options={countryOptions}
@@ -278,8 +297,15 @@ const OrderSummaryForm = ({ formType, cartvalue,  proforma}) => {
                             // Reset city selection when country changes
                             form.setValue('city', null);
                           }}
+                           // Optional: Load styles when interacted
+                       onMenuOpen={async () => {
+                        if (!isSelectLoaded) {
+                          setIsSelectLoaded(true);
+                        }
+                      }}
                           value={form.watch('country')} // Use watch to get current value
                         />
+                        </Suspense>
                         <FormMessage className="text-[12px] !mt-0" />
                       </FormItem>
                     )}

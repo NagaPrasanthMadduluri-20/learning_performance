@@ -18,11 +18,10 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
-import Select from "react-select";
 import { Loader } from "lucide-react";
 import { Toaster } from "@/components/ui/toaster";
 import { useToast } from "@/components/ui/use-toast";
-import React, { useMemo, useState } from "react";
+import React, { lazy, Suspense, useMemo, useState } from "react";
 import { options } from "@/data/options";
 import { getFormSchema } from "@/lib/formschema";
 import Text from "@/components/Text";
@@ -30,16 +29,7 @@ import { Separator } from "@/components/ui/separator";
 import { PhoneNumberInput } from "../../EnquiryForm/PhoneNumberInput";
 import { appData } from "@/data/appData";
 
-const customStyles = {
-  control: (provided, state) => ({
-    ...provided,
-    backgroundColor: state.isFocused,
-    border: state.isFocused
-      ? "0px solid #ccc focus-visible:ring-0 focus-visible:ring-offset-0"
-      : "border-2 border-gray-200",
-  }),
 
-};
 export const experiencesOptions = [
   { value: "itil", label: "ITIL" },
   { value: "pmp", label: "PMP" },
@@ -65,9 +55,11 @@ export const expertiseOptions = [
   { value: "25-plus-years", label: "25+ Years" },
 ];
 
-
+// Dynamically import react-select
+const Select = lazy(() => import("react-select"));
 
 const TrainerRegistrationForm = ({ formType }) => {
+  const [isSelectLoaded, setIsSelectLoaded] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
@@ -98,7 +90,23 @@ const TrainerRegistrationForm = ({ formType }) => {
     defaultValues,
   });
 
+  const customStyles = {
+    control: (provided, state) => ({
+      ...provided,
+      backgroundColor: state.isFocused,
+      border: state.isFocused
+        ? "0px solid #ccc focus-visible:ring-0 focus-visible:ring-offset-0"
+        : "border-2 border-gray-200",
+    }),
+  
+  };
+
   const onSubmit = async (data) => {
+     // Dynamically import both the component and its styles
+     if (!isSelectLoaded) {
+      await Promise.all([import("react-select")]);
+      setIsSelectLoaded(true);
+    }
     setIsSubmitting(true);
     try {
       await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -277,6 +285,12 @@ const TrainerRegistrationForm = ({ formType }) => {
                         className="rounded-2xl h-auto py-1 font-montserrat text-[14px] focus-visible:ring-0 focus-visible:ring-offset-0"
                         instanceId="select-course"
                         styles={customStyles}
+                         // Optional: Load styles when interacted
+                       onMenuOpen={async () => {
+                        if (!isSelectLoaded) {
+                          setIsSelectLoaded(true);
+                        }
+                      }}
                       />
                       <FormMessage className="text-[12px] !mt-0" />
                     </FormItem>
@@ -287,6 +301,15 @@ const TrainerRegistrationForm = ({ formType }) => {
                   control={form.control}
                   render={({ field }) => (
                     <FormItem>
+                      <Suspense
+                      fallback={
+                        <select className="border-2 border-gray-200 h-11 focus-visible:ring-0 focus-visible:ring-offset-0 py-0 px-2 w-full text-[14px] font-montserrat rounded-md text-gray-500">
+                          <option value="" disabled>
+                          Experiences*
+                          </option>
+                        </select>
+                      }
+                    >
                       <Select
                         {...field}
                         options={experiencesOptions}
@@ -295,7 +318,14 @@ const TrainerRegistrationForm = ({ formType }) => {
                         className="rounded-2xl h-auto py-1 font-montserrat text-[14px] focus-visible:ring-0 focus-visible:ring-offset-0"
                         instanceId="select-course"
                         styles={customStyles}
+                         // Optional: Load styles when interacted
+                       onMenuOpen={async () => {
+                        if (!isSelectLoaded) {
+                          setIsSelectLoaded(true);
+                        }
+                      }}
                       />
+                      </Suspense>
                       <FormMessage className="text-[12px] !mt-0" />
                     </FormItem>
                   )}
@@ -305,6 +335,15 @@ const TrainerRegistrationForm = ({ formType }) => {
                   control={form.control}
                   render={({ field }) => (
                     <FormItem>
+                       <Suspense
+                      fallback={
+                        <select className="border-2 border-gray-200 h-11 focus-visible:ring-0 focus-visible:ring-offset-0 py-0 px-2 w-full text-[14px] font-montserrat rounded-md text-gray-500">
+                          <option value="" disabled>
+                          Expertise*
+                          </option>
+                        </select>
+                      }
+                    >
                       <Select
                         {...field}
                         options={expertiseOptions}
@@ -313,7 +352,14 @@ const TrainerRegistrationForm = ({ formType }) => {
                         className="rounded-2xl h-auto py-1 font-montserrat text-[14px] focus-visible:ring-0 focus-visible:ring-offset-0"
                         instanceId="select-course"
                         styles={customStyles}
+                         // Optional: Load styles when interacted
+                       onMenuOpen={async () => {
+                        if (!isSelectLoaded) {
+                          setIsSelectLoaded(true);
+                        }
+                      }}
                       />
+                      </Suspense>
                       <FormMessage className="text-[12px] !mt-0" />
                     </FormItem>
                   )}
@@ -323,6 +369,15 @@ const TrainerRegistrationForm = ({ formType }) => {
                   control={form.control}
                   render={({ field }) => (
                     <FormItem>
+                      <Suspense
+                      fallback={
+                        <select className="border-2 border-gray-200 h-11 focus-visible:ring-0 focus-visible:ring-offset-0 py-0 px-2 w-full text-[14px] font-montserrat rounded-md text-gray-500">
+                          <option value="" disabled>
+                          Select the country*
+                          </option>
+                        </select>
+                      }
+                    >
                       <Select
                         {...field}
                         options={countryOptions}
@@ -331,6 +386,12 @@ const TrainerRegistrationForm = ({ formType }) => {
                         className="rounded-2xl h-auto py-1 font-montserrat text-[14px] focus-visible:ring-0 focus-visible:ring-offset-0"
                         instanceId="select-course"
                         styles={customStyles}
+                         // Optional: Load styles when interacted
+                       onMenuOpen={async () => {
+                        if (!isSelectLoaded) {
+                          setIsSelectLoaded(true);
+                        }
+                      }}
                         onChange={(selectedOption) => {
                           // Use setValue to update the form value
                           form.setValue('country', selectedOption, { 
@@ -340,6 +401,7 @@ const TrainerRegistrationForm = ({ formType }) => {
                           form.setValue('city', null);
                         }}
                       />
+                      </Suspense>
                       <FormMessage className="text-[12px] !mt-0" />
                     </FormItem>
                   )}
