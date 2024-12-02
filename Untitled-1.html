@@ -1,0 +1,718 @@
+<DotNavigation
+        slides={testimonialdata}
+        currentSlide={currentSlide}
+        onDotClick={(index) => {
+          api?.scrollTo(index);
+        }}
+      />
+
+const DotNavigation = ({ slides, currentSlide, onDotClick }) => (
+  <div className="flex justify-center mt-4">
+    {slides.map((_, index) => (
+      <button
+        key={index}
+        className={`w-3 h-3 mx-1 rounded-full ${
+          currentSlide === index ? "bg-secondary" : "bg-gray-300"
+        }`}
+        onClick={() => onDotClick(index)}
+      />
+    ))}
+  </div>
+);
+
+
+
+// const params = [];
+
+//   // 1. Generate paths for categories without country
+//   jsonData.categories.forEach(category => {
+//     params.push({ slug: [category.slug] });
+//   });
+
+//   // 2. Generate paths for categories with country
+//   jsonData.categories.forEach(category => {
+//     jsonData.countries.forEach(country => {
+//       params.push({ slug: [country, category.slug] });
+//     });
+//   });
+
+//   // 3. Generate paths for courses without country
+//   jsonData.courses.forEach(course => {
+//     params.push({ slug: [course.slug] });
+//   });
+
+//   // 4. Generate paths for courses with country
+//   jsonData.courses.forEach(course => {
+//     jsonData.countries.forEach(country => {
+//       params.push({ slug: [country, course.slug] });
+//     });
+//   });
+
+//   // 5. Generate paths for courses with country and city
+//   jsonData.courses.forEach(course => {
+//     jsonData.countries.forEach(country => {
+//       if (jsonData.cities[country]) {
+//         jsonData.cities[country].forEach(city => {
+//           params.push({ slug: [country, course.slug, city] });
+//         });
+//       }
+//     });
+//   });
+
+// console.log("slug in page", slug);
+// console.log("lang in page", lang);
+// console.log("coursedata", data);
+
+//console.log("Page type:", validation.pageType);
+// console.log("slug in page", Array.isArray(slug) ? slug.join("/") : slug);
+// console.log("lang in page", lang);
+// console.log("city in page", city);
+// console.log("coursedata", data);
+// console.log("categorydata", data);
+// Render your page based on the pageType and users data
+
+// export async function generateStaticParams({ params }) {
+//   const { lang } = params;
+//   const { CategoryData } = await getUsers("", lang);
+//   const { CourseData } = await getUserById("", lang);
+
+//   const categoryPaths = CategoryData ? CategoryData.map((category) => ({
+//     slug: category.page_slug,
+//     lang,
+//   })) : [];
+
+//   const coursePaths = CourseData ? CourseData.map((course) => ({
+//     slug: course.page_slug,
+//     lang,
+//   })) : [];
+
+//   return [...categoryPaths, ...coursePaths];
+// }
+
+
+
+  // Get all valid params from generateStaticParams
+  // const validParams = await generateStaticParams();
+
+  // // Function to check if the current params match any valid params
+  // const isValidParam = (currentParams) => {
+  //   return validParams.some(
+  //     (validParam) =>
+  //       JSON.stringify(validParam.slug) === JSON.stringify(currentParams)
+  //   );
+  // };
+
+  // // Construct the current params array
+  // const currentParams = lang ? [lang, ...slug.split("/")] : slug?.split("/");
+  // if (city) currentParams.push(city);
+  // console.log("current params", currentParams);
+  // // Check if the current params are valid
+  // if (lang !== i18n.defaultLocale && !isValidParam(currentParams)) {
+  //   return <div>404 - Page Not Found</div>;
+  // }
+
+
+  layout backup
+  -------------------------------------------------------------------
+
+  // import { Montserrat } from "next/font/google";
+// import "./styles/globals.css";
+// import Header from "./Header";
+// import { ThemeProvider } from "@/components/theme-provider";
+// import Footer from "./Footer";
+
+// export const metadata = {
+//   title: "Certification Training Courses | ITIL, PMP, PRINCE2, Six Sigma, COBIT 5 | Invensis Learning",
+//   description: "Invensis Learning imparts ITIL, PMP, CAPM, PRINCE2, Six Sigma, COBIT 5, DevOps, Cloud Computing, Agile, &amp; Change Management Training courses for individuals and enterprises globally. Trainings are delivered through instructor-led classroom and live online training modes.",
+// };
+
+// const montserrat = Montserrat({
+//   subsets: ["latin"],
+//   variable: "--font-montserrat",
+//   display: "swap",
+//   weight: ["300", "400", "500", "600", "700"], // Add the weights you need
+// });
+
+// export default async function RootLayout({ children, params }) {
+//   // Providing all messages to the client
+//   // side is the easiest way to get started
+
+//   return (
+//     <html className={`${montserrat.variable}`}>
+//       <body>
+//         <ThemeProvider
+//           attribute="class"
+//           defaultTheme="system"
+//           enableSystem
+//           disableTransitionOnChange
+//         >
+//           <Header />
+//           {children}
+//           <Footer />
+//         </ThemeProvider>
+//         <script
+//             async
+//             defer
+//             class="cytrio-script"
+//             src="https://cytriocpmprod.blob.core.windows.net/cytrio-public/cookiescript/2312/2394/script.js"
+//           ></script>
+//       </body>
+//     </html>
+//   );
+// }
+
+// import { Montserrat } from "next/font/google";
+// import Head from "next/head";
+// import "./styles/globals.css";
+// import Header from "./Header";
+// import { ThemeProvider } from "@/components/theme-provider";
+// import Footer from "./Footer";
+// import Script from 'next/script';
+
+// export const metadata = {
+//   title: "Certification Training Courses | ITIL, PMP, PRINCE2, Six Sigma, COBIT 5 | Invensis Learning",
+//   description: "Invensis Learning imparts ITIL, PMP, CAPM, PRINCE2, Six Sigma, COBIT 5, DevOps, Cloud Computing, Agile, &amp; Change Management Training courses for individuals and enterprises globally. Trainings are delivered through instructor-led classroom and live online training modes.",
+// };
+
+// const montserrat = Montserrat({
+//   subsets: ["latin"],
+//   variable: "--font-montserrat",
+//   display: "swap",
+//   weight: ["300", "400", "500", "600", "700"],
+// });
+
+// export default function RootLayout({ children }) {
+//   return (
+//     <html className={`${montserrat.variable}`}>
+//       <Head>
+//         <meta
+//           name="viewport"
+//           content="minimum-scale=1, initial-scale=1, width=device-width"
+//         />
+//         <meta name="robots" content="noindex, nofollow" />
+//         <link rel="apple-touch-icon" sizes="180x180" href="/static/icons/apple-touch-icon.png" />
+//         <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico" />
+//         <link rel="dns-prefetch" href="https://cytriocpmprod.blob.core.windows.net" />
+//         <link rel="dns-prefetch" href="https://www.zopim.com" />
+//         <link rel="dns-prefetch" href="https://www.google-analytics.com/" />
+//         <link rel="dns-prefetch" href="https://static.zdassets.com" />
+//         <link rel="dns-prefetch" href="https://www.google.com" />
+//         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+//         <link rel="dns-prefetch" href="https://static.hotjar.com" />
+//       </Head>
+//       <body>
+//         <ThemeProvider
+//           attribute="class"
+//           defaultTheme="system"
+//           enableSystem
+//           disableTransitionOnChange
+//         >
+//           <Header />
+//           {children}
+//           <Footer />
+//         </ThemeProvider>
+
+//         {/* Cytrio Cookie Script */}
+//         <Script
+//           src="https://cytriocpmprod.blob.core.windows.net/cytrio-public/cookiescript/2312/2394/script.js"
+//           async
+//           defer
+//           id="cytrio-script"
+//           strategy="lazyOnload"
+//         />
+
+//         {/* Google Tag Manager Script */}
+//         {/* <Script
+//           id="google-tag-manager"
+//           src="https://www.googletagmanager.com/gtag/js?id=G-XCLJ09CD6B"
+//           strategy="lazyOnload"
+         
+//         /> */}
+//         {/* <Script
+//           id="google-tag-manager-init"
+//           strategy="lazyOnload"
+//           dangerouslySetInnerHTML={{
+//             __html: `
+//               window.dataLayer = window.dataLayer || [];
+//               function gtag() { dataLayer.push(arguments); }
+//               gtag('js', new Date());
+//               gtag('config', 'G-XCLJ09CD6B');
+//             `,
+//           }}
+//         /> */}
+
+//         {/* Hotjar Script */}
+//         <Script
+//           id="hotjar"
+//           src="https://static.hotjar.com/c/hotjar-3548742.js?sv=6"
+//           strategy="lazyOnload"
+//           async
+//         />
+
+//         {/* Zopim (Zendesk) Chat Widget Script */}
+//         <Script
+//           strategy="lazyOnload"
+//           id="ze-snippet"             
+//           src = 'https://static.zdassets.com/ekr/snippet.js?key=b5798bd8-0e7e-4e68-a1d0-6d949b4063e6'
+//           async
+//           defer
+//         />
+//       </body>
+//     </html>
+//   );
+// }
+
+ {/* Use LazyScript for delayed loading */}
+        {/* <LazyScript 
+          src="https://cytriocpmprod.blob.core.windows.net/cytrio-public/cookiescript/2312/2394/script.js" 
+          delay={10000} 
+          className="cytrio-script"
+          id="cytrio-script"
+        /> */}
+
+        {/* Other scripts can be loaded similarly */}
+
+
+        {/* <script
+          class="cytrio-script"
+          id="cytrio-script"
+          async
+          defer
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                setTimeout(function() {
+                  var script = document.createElement('script');
+                  script.src = 'https://cytriocpmprod.blob.core.windows.net/cytrio-public/cookiescript/2312/2394/script.js';
+                  script.async = true;
+                  script.defer = true;
+                  document.head.appendChild(script);
+                }, 5000); // Delay of 5 seconds (5000 milliseconds)
+              })();
+            `,
+          }}
+        /> */}
+
+
+        {/* For scripts that need to be loaded earlier, you can still use Next.js Script component */}
+        {/* <Script
+          id="google-tag-manager"
+          src="https://www.googletagmanager.com/gtag/js?id=G-XCLJ09CD6B"
+          strategy="afterInteractive"
+        />
+        <Script
+          id="google-tag-manager-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag() { dataLayer.push(arguments); }
+              gtag('js', new Date());
+              gtag('config', 'G-XCLJ09CD6B');
+            `,
+          }}
+        /> */}
+
+        {/* <LazyScript
+          src="https://cytriocpmprod.blob.core.windows.net/cytrio-public/cookiescript/2312/2394/script.js"
+          className="cytrio-script"
+          delay={5000}
+          loadOnUserActivity={true}
+        /> */}
+
+        {/* <script
+        async
+        defer
+        strategy="lazyOnload" 
+        class="cytrio-script"
+        src="https://cytriocpmprod.blob.core.windows.net/cytrio-public/cookiescript/2312/2394/script.js"
+        ></script> */}
+
+
+
+       // header
+       ---------------------------------------------
+
+       // const { theme } = useTheme();
+  // const [isHidden, setIsHidden] = useState(false);
+  // const [lastScrollY, setLastScrollY] = useState(0);
+  // const [hasScrolled, setHasScrolled] = useState(false);
+  // const headerRef = useRef(null);
+
+  // useEffect(() => {
+  //   const header = headerRef.current;
+  //   const targetElement = document.getElementById('stickynavscroll');
+
+  //   if (!header || !targetElement) return;
+
+  //   const observerOptions = {
+  //     root: null,
+  //     rootMargin: "80px",
+  //     threshold: 0.1 // Adjust this value to change when the header hides
+  //   };
+
+  //   const observerCallback = (entries) => {
+  //     entries.forEach(entry => {
+  //       if (entry.isIntersecting) {
+  //         setIsHidden(true);
+  //       } else {
+  //         setIsHidden(false);
+  //       }
+  //     });
+  //   };
+
+  //   const observer = new IntersectionObserver(observerCallback, observerOptions);
+  //   observer.observe(targetElement);
+
+  //   return () => {
+  //     if (targetElement) {
+  //       observer.unobserve(targetElement);
+  //     }
+  //   };
+  // }, []);
+
+  // useEffect(() => {
+  //   const controlHeader = () => {
+  //     if (typeof window !== "undefined") {
+  //       const currentScrollY = window.scrollY;
+
+  //       if (currentScrollY > lastScrollY && currentScrollY > 600) {
+  //         // Scrolling down & past header
+  //         setIsHidden(true);
+  //       } else if (currentScrollY < lastScrollY && currentScrollY < 600) {
+  //         // Scrolling up
+  //         setIsHidden(false);
+  //       }
+  //       setLastScrollY(currentScrollY);
+  //     }
+  //   };
+
+  //   if (typeof window !== "undefined") {
+  //     window.addEventListener("scroll", controlHeader);
+
+  //     // Cleanup function
+  //     return () => {
+  //       window.removeEventListener("scroll", controlHeader);
+  //     };
+  //   }
+  // }, [lastScrollY]);
+
+  // useEffect(() => {
+  //   const stickyElement = document.getElementById('stickynavscroll');
+  //   if (!stickyElement) return;
+
+  //   const observer = new IntersectionObserver(
+  //     ([entry]) => {
+  //       setIsHidden(!entry.isIntersecting);
+  //     },
+  //     {
+  //       rootMargin: '-80px 0px 0px 0px',
+  //       threshold: 0,
+  //     }
+  //   );
+
+  //   observer.observe(stickyElement);
+
+  //   return () => observer.disconnect();
+  // }, []);
+
+  // useEffect(() => {
+  //   const stickyElement = document.getElementById('stickynavscroll');
+  //   if (!stickyElement) return;
+
+  //   const observer = new IntersectionObserver(
+  //     ([entry]) => {
+  //       if (hasScrolled) {
+  //         setIsHidden(!entry.isIntersecting);
+  //       }
+  //     },
+  //     {
+  //       rootMargin: '-80px 0px 0px 0px',
+  //       threshold: 0,
+  //     }
+  //   );
+
+  //   observer.observe(stickyElement);
+
+  //   const handleScroll = () => {
+  //     if (!hasScrolled && window.scrollY > 0) {
+  //       setHasScrolled(true);
+  //     }
+  //   };
+
+  //   window.addEventListener('scroll', handleScroll);
+
+  //   return () => {
+  //     observer.disconnect();
+  //     window.removeEventListener('scroll', handleScroll);
+  //   };
+  // }, [hasScrolled]);
+
+
+  
+////////////////////////////////////////////////////////////////////////////////////////
+
+  // If city is provided but no data found, show NotFound
+// if (!data && city) {
+//   console.log("!data && city in lang");
+//   return <NotFound />;
+// }
+
+// City validation
+// const isCityValid = (appData?.countries || []).some((countryData) => {
+//   const countryCities = countryData.cities || [];
+//   return countryCities.some((cityData) => cityData.short_name === city);
+// });
+// console.log("isCityValid", isCityValid);
+// if (!isCityValid && city) {
+//   return <NotFound />;
+// }
+
+
+/////////////////////////////////////Schedules ///////////////////////////////////////////////////////////////////
+
+
+// "use client";
+// import Container from "@/components/Container";
+// import Text from "@/components/Text";
+// import { Button } from "@/components/ui/button";
+// import React, { useEffect, useState } from "react";
+// import CounterComponent from "./CounterComponent";
+// import OffersComponent from "./OffersComponent";
+// import EmailEnquire from "./EmailEnquire";
+// import FilterComponent from "@/app/components/FilterComponent";
+// import { ChevronDown } from "lucide-react";
+// import ScheduleTopComponent from "./ScheduleTopComponent";
+// import ExpandableContent from "@/app/components/ExpandableComponent";
+
+// const schedules = require("../../../../data/schedules.json");
+
+// const Schedules = ({ additionalData }) => {
+//   const [expanded, setExpanded] = useState(false);
+
+//   const handleClickOffer = (e) => {
+//     e.preventDefault();
+//     setExpanded(!expanded);
+//   };
+
+//   const [monthFilters, setMonthFilters] = useState([]);
+//   const [dayTypeFilters, setDayTypeFilters] = useState([]);
+//   const [selectedMonth, setSelectedMonth] = useState(null);
+//   const [filteredSchedules, setFilteredSchedules] = useState(schedules.data);
+
+//   const months = ["Aug", "Sep", "Oct", "Nov"];
+
+//   useEffect(() => {
+//     filterSchedules();
+//   }, [monthFilters, dayTypeFilters, selectedMonth]);
+
+//   const filterSchedules = () => {
+//     const filtered = schedules.data.filter((schedule) => {
+//       const monthMatch =
+//         monthFilters.length === 0 ||
+//         monthFilters.some((filter) => {
+//           if (filter === "This Month")
+//             return schedule.months.includes(new Date().getMonth() + 1);
+//           if (filter === "Next Month")
+//             return schedule.months.includes((new Date().getMonth() + 2) % 12);
+//           return true;
+//         });
+
+//       const dayTypeMatch =
+//         dayTypeFilters.length === 0 ||
+//         dayTypeFilters.some((filter) => {
+//           if (filter === "Weekend Class")
+//             return schedule.event_type === "Weekend";
+//           if (filter === "WeekDay Class")
+//             return schedule.event_type === "Weekday";
+//           return true;
+//         });
+
+//       const selectedMonthMatch =
+//         !selectedMonth ||
+//         schedule.schedule_dates.some((date) => date.month === selectedMonth);
+
+//       return monthMatch && dayTypeMatch && selectedMonthMatch;
+//     });
+
+//     setFilteredSchedules(filtered);
+//   };
+
+//   const handleMonthFilterChange = (filter) => {
+//     setMonthFilters((prev) => {
+//       if (prev.includes(filter)) {
+//         return prev.filter((f) => f !== filter);
+//       } else {
+//         return [...prev, filter];
+//       }
+//     });
+//   };
+
+//   const handleDayTypeFilterChange = (filter) => {
+//     setDayTypeFilters((prev) => {
+//       if (prev.includes(filter)) {
+//         return prev.filter((f) => f !== filter);
+//       } else {
+//         return [...prev, filter];
+//       }
+//     });
+//   };
+
+//   const handleMonthSelection = (month) => {
+//     setSelectedMonth(month);
+//     if (month === "Aug") {
+//       setMonthFilters(["This Month"]);
+//     } else if (month === "Sep") {
+//       setMonthFilters(["Next Month"]);
+//     } else {
+//       setMonthFilters([]);
+//     }
+//   };
+
+//   const clearFilters = () => {
+//     setMonthFilters([]);
+//     setDayTypeFilters([]);
+//     setSelectedMonth(null);
+//   };
+//   const initialHeight = { mobile: "900px", desktop: "1020px" };
+//   return (
+//     <div className="bg-lightbackground mt-8">
+//       <Container>
+//         <Text variant="h2" className="mb-11">
+//           {" "}
+//           Schedules For {additionalData.page_name}{" "}
+//         </Text>
+//         <div>
+//           <FilterComponent
+//             monthFilters={monthFilters}
+//             dayTypeFilters={dayTypeFilters}
+//             selectedMonth={selectedMonth}
+//             onMonthFilterChange={handleMonthFilterChange}
+//             onDayTypeFilterChange={handleDayTypeFilterChange}
+//             onMonthSelection={handleMonthSelection}
+//             onClearFilters={clearFilters}
+//             months={months}
+//           />
+//         </div>
+//       <div>
+//         <ScheduleTopComponent/>
+//       </div>
+//       <ExpandableContent
+//           initialHeight={initialHeight}
+//           buttonClassName={`rounded-full border border-gray-500 relative z-10 h-8 items-center hover:bg-primary hover:text-primary-foreground`}
+//           contentClassName="mt-4"
+//         >
+//         {filteredSchedules.map((schedule, scheduleindex) => (
+//           <div
+//             key={scheduleindex}
+//             className={`mb-6 rounded-md px-4 md:px-8 py-4 border-2 shadow-md w-full ${
+//               scheduleindex === 0
+//                 ? "bg-gradient-to-b from-[#fffbf2] to-[#ffffff] border-orange-400 dark:bg-detailcontrast"
+//                 : "bg-background border-gray-300"
+//             }`}
+//           >
+//             <div className="grid grid-cols-1 sm:grid-cols-10 sm:justify-between md:grid-cols-11">
+//               <div className="col-span-1 sm:col-span-4 md:col-span-3">
+//                 {schedule.schedule_dates.map((dates, datesindex) => (
+//                   <div key={datesindex}>
+//                     <div className="flex mr-2 items-center" key={datesindex}>
+//                       <Text className="text-[13px] md:text-[16px] font-bold mr-4">
+//                         {" "}
+//                         {dates.name}{" "}
+//                       </Text>
+//                       <span className="text-[10px] md:text-[11px] text-primary bg-lightbackground rounded-md font-semibold py-1 px-1">
+//                         {schedule.event_type}
+//                       </span>
+//                     </div>
+//                     <div className="flex flex-wrap gap-x-2 md:gap-x-3 mt-2">
+//                       {dates.event_date.map((date, dateindex) => (
+//                         <div
+//                           key={dateindex}
+//                           className=" border-2 border-gray-200 px-1 md:px-2 py-1 shadow-lg text-center rounded-lg bg-background mb-1"
+//                         >
+//                           <Text className="font-bold text-[11px] md:text-[15px]">
+//                             {date.date}
+//                           </Text>
+//                           <Text className="text-[11px] md:text-[14px]">{date.day}</Text>
+//                         </div>
+//                       ))}
+//                     </div>
+//                   </div>
+//                 ))}
+//               </div>
+//               <div className="col-span-1 sm:col-span-6 md:col-span-4 border-gray-200 items-center">
+//                 <div className="flex justify-between md:flex-row md:w-full md:ml-3 mt-3">
+//                   <div className="md:my-auto order-2 md:order-1">
+//                     <CounterComponent CounterData={schedule} />
+//                   </div>
+//                   <div className="md:mx-auto md:my-auto order-1 md:order-2">
+//                     <OffersComponent
+//                       OffersData={schedule}
+//                       Offerindex={scheduleindex}
+//                     />
+//                   </div>
+//                 </div>
+//               </div>
+//               <div className="col-span-1 sm:col-span-12 md:col-span-4 border-gray-200 md:items-center md:my-auto md:mt-11 mt-2">
+//                 <div className="flex flex-col sm:flex-row sm:gap-x-3">
+//                   <Button
+//                     variant="outline"
+//                     className="w-full md:w-[70%] text-[12px] md:text-[13px] h-9 md:h-12 leading-4 font-bold hover:bg-primary hover:text-primary-foreground flex-col order-2 sm:order-1"
+//                   >
+//                     Request For Group Training
+//                     <Text className="text-[12px] font-semibold">
+//                       {" "}
+//                       Onsite/Virtual
+//                     </Text>
+//                   </Button>
+//                   <Button
+//                     className={`w-full md:w-[40%] mb-2 h-9 md:h-12 text-[13px] md:text-[16px] font-semibold bg-[#00c24e] relative overflow-hidden hover:bg-[#00c24e] order-1 sm:order-2`}
+//                   >
+//                     Enroll Now
+//                     {scheduleindex === 0 ? (
+//                       <span className="absolute top-[-10px] bottom-0 left-0 h-[65px] w-[20px] flex items-center justify-center bg-white blur-[10px] opacity-70 rotate-45 white-fade-animation "></span>
+//                     ) : (
+//                       ""
+//                     )}
+//                   </Button>
+//                 </div>
+//               </div>
+//             </div>
+
+//             <div className="flex justify-between sm:justify-normal items-start sm:gap-x-14 mt-3">
+//               <div className="order-2 sm:order-1">
+//                 <EmailEnquire />
+//               </div>
+
+//               <div
+//                 className="text-[12px] text-blue-500 flex items-center font-semibold cursor-pointer order-1 sm:order-2"
+//                 onClick={handleClickOffer}
+//               >
+//                 View offers
+//                 <ChevronDown size={15} className="ml-2" />
+//               </div>
+//             </div>
+//             {expanded && (
+//               <div
+//                 className={`${
+//                   expanded ? "max-h-dvh" : "max-h-16 overflow-hidden"
+//                 } transition-max-height duration-500 ease-in-out`}
+//               >
+//                 <ul className="text-[10px] sm:text-[13px] font-semibold mr-auto list-disc border-t-2 mt-4 ml-5">
+//                   <li>Pay Once, Attend Twice</li>
+//                   <li>Group discount up to 15% applicable</li>
+//                   <li>
+//                     Special offer of 10% + 4% (Processing Fee waiver) applicable
+//                   </li>
+//                 </ul>
+//               </div>
+//             )}
+//           </div>
+//         ))}
+//         </ExpandableContent>
+//       </Container>
+//     </div>
+//   );
+// };
+
+// export default Schedules;

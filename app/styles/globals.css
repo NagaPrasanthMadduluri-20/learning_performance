@@ -1,0 +1,406 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+
+    --footer-background: 0 0% 14%;
+
+    --textcolor-footer: 0 0 100%;
+
+    --background: 0 0% 100%;  /* white */
+
+    --foreground: 206 32% 20%; /* #233453 */
+
+    --lightbackground: 207.3 84.6% 97.5%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    --primary: 231.6 52.6% 47.8%; /* #3f51b5 in HSL */
+    --primary-foreground: 0 0% 100%; /* white */
+
+    --secondary: 30 99% 46%; /* #Ec7601 in HSL */
+    --secondary-foreground: 0 0% 100%; /* white*/
+
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 10% 3.9%;
+    --radius: 0.5rem;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+  }
+
+  .dark {
+
+    --footer-background: 0 0% 4.71%; /* #0c0c0c0 */
+
+    --textcolor-footer: 0 0% 87.06%;   /*  #DEDEDE */
+
+    --background: 0 0% 0%;     /* black */
+    
+    --foreground: 0 0% 87.06%;   /*  #DEDEDE */
+
+    --darkheadings: 0 0% 90.2%;  /* #E6E6E6 */
+
+    --lightbackground: 217.09 88.71% 75.69% / 10.2%;
+
+    --darkbuttonprimary: 231.6 52.6% 47.8%; /* #3f51b5 in HSL */
+
+    --links: 217.09 88.71% 75.69%;  /* #8AB4F8  */
+
+    --lowcontrastbackground: 217.09 88.71% 75.69% / 10.2%; /* #8ab4f81a */
+
+    --detailcontrast: 240 5.26% 26.08% / 50.2%; /* #3f3f4680 */
+
+    --highlightdarkbackground: 0 0% 4.71%; /* #0c0c0c0 */
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 217.09 88.71% 75.69% / 10.2%;  /* #8ab4f81a */
+    --primary-foreground: 0 0% 87.06%;   /*  #DEDEDE */
+
+    --secondary: 217.09 88.71% 75.69% / 10.2%; /* #8ab4f81a */
+    --secondary-foreground: 0 0% 87.06%;  /*  #DEDEDE */
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0 9.8%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-50%); opacity: 0.6; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@layer components {
+  .container {
+    /* @apply w-full max-w-6xl mx-auto; */
+  }
+  /* Custom scrollbar styles */
+
+  .info-description b {
+    @apply my-3 font-bold;
+  }
+  .info-description h1 {
+    @apply text-[28px] font-bold my-4 text-primary dark:text-primary-foreground;
+  }
+  .info-description h2 {
+    @apply text-[20px] font-bold my-4;
+  }
+  .info-description h3 {
+    @apply text-[18px] font-bold my-4;
+  }
+  .info-description p {
+    @apply text-[14px] font-normal my-4 leading-7;
+  }
+  .info-description a {
+    @apply text-primary hover:text-secondary font-semibold transition duration-150 ease-in-out mb-4;
+  }
+  .info-description ul{
+    @apply list-disc ml-10
+  }
+  .info-description li{
+    @apply text-[14px] font-medium py-2 px-2;
+  }
+
+  /* Table styles */
+  .info-description table {
+    @apply w-auto border-collapse bg-background text-foreground dark:text-primary-foreground shadow-md rounded-lg overflow-hidden my-4 border-2;
+  }
+
+  .info-description th {
+    @apply bg-gray-100 dark:bg-lowcontrastbackground text-foreground dark:text-primary-foreground text-left text-[14px] font-semibold text-gray-600 uppercase tracking-wider py-2 px-3;
+  }
+
+  .info-description td {
+    @apply text-[14px] text-foreground dark:text-primary-foreground font-medium text-gray-900 py-2 px-3 border-2 border-collapse border-gray-200 w-auto;
+  }
+
+  .info-description tr:nth-child(even) {
+    @apply bg-gray-100 dark:bg-lowcontrastbackground text-foreground dark:text-primary-foreground border-collapse border-2;
+  }
+
+  .info-description tr:hover {
+    @apply bg-gray-100 dark:bg-lowcontrastbackground text-foreground dark:text-primary-foreground transition duration-150 ease-in-out;
+  }
+
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.star-half {
+  position: relative;
+  overflow: hidden;
+}
+
+.star-half::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background-color: #fbbf24; /* Tailwind's yellow-400 */
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInFromLeft {
+  from { transform: translateX(-20%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+@keyframes slideLoop {
+  0% {
+    left: 0;
+    transform: translateX(-100%) rotate(45deg);
+  }
+  100% {
+    left: 100%;
+    transform: rotate(45deg);
+  }
+}
+
+.white-fade-animation {
+  background-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: slideLoop 2s linear infinite;
+}
+
+/* Add this to your global CSS file */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+.animate-pulse {
+  animation: pulse 2s infinite;
+}
+
+.css-13cymwt-control {
+  background-color: "hsl(var(--background))";
+} 
+
+.quick-nav-container {
+  width: "100%";
+}
+
+.quick-nav-container h4 {
+  position:absolute;
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: bold;
+  width: 112px;
+  top: 0px;
+  left: 0px;
+  text-align: center;
+  padding: 8px;
+}
+
+/* creates triangle */
+.quick-nav-container h4:after {
+  content:"";
+  position:absolute;
+  bottom:-10px; /* value = - border-top-width - border-bottom-width */
+  left:56px; /* controls horizontal position */
+  border-width:10px 10px 0; /* vary these values to change the angle of the vertex */
+  border-style:solid;
+  border-color:#666666 transparent;
+  /* reduce the damage in FF3.0 */
+  display:block; 
+  width:0;
+  z-index: 1;
+}
+
+/* .quick-nav-container a.close {
+  position: absolute;
+  top: 4px;
+  right: -12px;
+  width: 16px;
+  height: 16px;
+  text-decoration: none;
+  color: #333333;
+  background-color: #FFFFFF;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+} */
+
+.quick-nav {
+  position: relative;
+  background-color: #FFFFFF;
+  font-size: 10px;
+  padding: 20px 90px 20px 20px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+}
+
+.quick-nav a {
+  color: #333333;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.quick-nav table th.skew {
+  height: 80px;
+  width: 70px;
+  position: relative;
+  vertical-align: bottom;
+}
+
+.quick-nav table th.skew > div {
+  position: relative;
+  top: 0px;
+  left: 30px;
+  height: 100%;
+  transform:skew(-45deg,0deg);
+  -ms-transform:skew(-45deg,0deg); /* IE 9 */
+  -moz-transform:skew(-45deg,0deg); /* Firefox */
+  -webkit-transform:skew(-45deg,0deg); /* Safari and Chrome */
+  -o-transform:skew(-45deg,0deg); /* Opera */    
+  overflow: hidden;
+  border-top: 1px solid #CCCCCC;
+  border-left: 1px solid #CCCCCC;
+  border-right: 1px solid #CCCCCC;
+  border-bottom: 1px solid #CCCCCC;
+}
+
+.quick-nav table th.skew span {
+  transform:skew(45deg,0deg) rotate(315deg);
+  -ms-transform:skew(45deg,0deg) rotate(315deg); /* IE 9 */
+  -moz-transform:skew(45deg,0deg) rotate(315deg); /* Firefox */
+  -webkit-transform:skew(45deg,0deg) rotate(315deg); /* Safari and Chrome */
+  -o-transform:skew(45deg,0deg) rotate(315deg); /* Opera */        
+  position: absolute;
+  bottom: 15px;
+  left: 1px;
+  display: inline-block;
+  width: 100%;
+  text-align: left;
+}
+
+.quick-nav table td {
+  width: auto;
+  height: 35px;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid #CCCCCC;
+}
+
+.quick-nav table td a {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.quick-nav table td.project-name {
+  width: auto;
+  text-align: right;
+  font-weight: bold;
+  border: none;
+  padding-right: 8px;
+}
+
+/* .quick-nav table .odd {
+  background-color: #E8E8E8;
+} */
+}

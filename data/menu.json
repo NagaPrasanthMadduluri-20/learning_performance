@@ -1,0 +1,577 @@
+{
+    "generic_menu": [
+      {
+        "name": "Agile Courses",
+        "category": "Agile Courses",
+        "menu_name": "Agile & Scrum Certification",
+        "image_media_path": "https://stagingbeta.invensislearning.com/static/images/agile-cat.svg",
+        "link_title": "Read more on Agile Project Management Courses in __COUNTRY__",
+        "order_by": 1,
+        "slug": "agile-certification-courses",
+        "category_accredations": [
+          { "Accrediations": "pmi-Acp-certification.svg", "name": "PMI" },
+          { "Accrediations": "Exinforsrcum.svg", "name": "EXIN" },
+          { "Accrediations": "apmgnew.svg", "name": "APMG" }
+        ],
+        "courses": [
+          {
+            "image": "pmi-acp-icon.svg",
+            "Acc": "PMI",
+            "p": "y",
+            "d": 3,
+            "id": 16,
+            "name": "PMI-ACP Exam Prep",
+            "label": "Best Seller",
+            "slug": "pmi-acp-certification-training",
+            "order_by": 1,
+            "category": "Agile Project Management"
+          },
+          {
+            "image": "SAFe-Scrum-Master.svg",
+            "id": 57,
+            "name": "SAFe Scrum Master",
+            "slug": "safe-scrum-master-training",
+            "order_by": 8,
+            "category": "Agile Project Management"
+          },
+          {
+            "image": "agile-scrum-foundation-icon.svg",
+            "Acc": "EXIN",
+            "p": "y",
+            "d": 2,
+            "id": 22,
+            "name": "Agile Scrum Foundation",
+            "slug": "agile-scrum-foundation-certification-training",
+            "order_by": 9,
+            "category": "Agile Project Management"
+          },
+          {
+            "image": "agile-scrum-master-icon.svg",
+            "Acc": "EXIN",
+            "p": "y",
+            "d": 2,
+            "id": 23,
+            "name": "Agile Scrum Master (ASM)",
+            "label": "Trending",
+            "slug": "agile-scrum-master",
+            "order_by": 3,
+            "category": "Agile Project Management"
+          },
+          {
+            "image": "SAFe-For-Government.svg",
+            "id": 58,
+            "name": "SAFe for Government",
+            "slug": "safe-for-government-training",
+            "order_by": 10,
+            "category": "Agile Project Management"
+          },
+          {
+            "image": "Scrum-Fundamentals.svg",
+            "id": 547,
+            "name": "Scrum Fundamentals",
+            "slug": "scrum-fundamentals",
+            "order_by": 66,
+            "category": "Agile Project Management"
+          },
+          {
+            "image": "csm.svg",
+            "p": "y",
+            "d": 2,
+            "id": 45,
+            "name": "Certified ScrumMaster (CSM)",
+            "slug": "csm-certification-training",
+            "order_by": 4,
+            "category": "Agile Project Management"
+          },
+          {
+            "image": "Leading-SAFe.svg",
+            "id": 48,
+            "name": "Leading SAFe 6.0 Certification",
+            "slug": "leading-safe-training",
+            "order_by": 6,
+            "category": "Agile Project Management"
+          },
+          {
+            "image": "cspo.svg",
+            "id": 46,
+            "name": "Certified Scrum Product Owner (CSPO)",
+            "slug": "cspo-certification-training",
+            "order_by": 5,
+            "category": "Agile Project Management"
+          },
+          {
+            "image": "SAFe-For-Teams.svg",
+            "id": 56,
+            "name": "SAFe for Teams",
+            "slug": "safe-for-teams-training",
+            "order_by": 7,
+            "category": "Agile Project Management"
+          },
+          {
+            "image": "agilepm-icon.svg",
+            "Acc": "APMG",
+            "label": "Best Seller",
+            "id": 356,
+            "name": "AgilePM Foundation and Practitioner Certification",
+            "slug": "agile-pm-certification",
+            "order_by": 2,
+            "category": "Agile Project Management"
+          },
+          {
+            "image": "Kanban.svg",
+            "id": 541,
+            "name": "Kanban Training",
+            "slug": "kanban-training",
+            "order_by": 11,
+            "category": "Agile Project Management"
+          }
+        ]
+      },
+      {
+        "name": "Project Management Courses",
+        "menu_name": "Project Management Certifiation",
+        "image_media_path": "https://alpha.invensislearning.com/storage/Category/project-management-category.svg",
+        "link_title": "Read more on Project Management Courses in __COUNTRY__",
+        "order_by": 2,
+        "slug": "project-management-certification-courses",
+        "category_accredations": [
+          { "Accrediations": "pmi-Acp-certification.svg", "name": "PMI" },
+          { "Accrediations": "Exinforsrcum.svg", "name": "EXIN" },
+          { "Accrediations": "apmgnew.svg", "name": "APMG" },
+          { "Accrediations": "Axelosnew.svg", "name": "AXELOS" },
+          { "Accrediations": "peoplecert-icon.svg", "name": "PeopleCert" }
+        ],
+        "courses": [
+          {
+            "image": "apmgnew.svg",
+            "Acc": "APMG",
+            "id": 352,
+            "name": "Change management Foundation and Practitioner Certification",
+            "slug": "change-management-certification",
+            "order_by": 6,
+            "category": "Project Management"
+          },
+          {
+            "image": "Lean-Project-Management.svg",
+            "id": 546,
+            "name": "Lean Project Management",
+            "slug": "lean-project-management",
+            "order_by": 11,
+            "category": "Project Management"
+          },
+          {
+            "image": "pmp-icon.svg",
+            "Acc": "PMI",
+            "hp": "y",
+            "p": "y",
+            "d": 4,
+            "id": 353,
+            "label": "Best Seller",
+            "name": "PMP Certification",
+            "slug": "pmp-certification-training",
+            "order_by": 1,
+            "category": "Project Management"
+          },
+          {
+            "image": "projectmangementlogo.svg",
+            "label": "Trending",
+            "p": "y",
+            "d": 2,
+            "id": 24,
+            "name": "Project Management Fundamentals",
+            "slug": "project-management-fundamentals-training",
+            "order_by": 4,
+            "category": "Project Management"
+          },
+          {
+            "image": "capm-icon.svg",
+            "Acc": "PMI",
+            "label": "Trending",
+            "p": "y",
+            "d": 3,
+            "id": 14,
+            "name": "CAPM Exam Prep",
+            "slug": "capm-certification-training",
+            "order_by": 3,
+            "category": "Project Management"
+          },
+          {
+            "image": "Microsoft-Project.svg",
+            "id": 540,
+            "name": "Microsoft Project Training",
+            "slug": "microsoft-project-training",
+            "order_by": 8,
+            "category": "Project Management"
+          },
+          {
+            "image": "oracle-primavera-icon.svg",
+            "id": 545,
+            "name": "Oracle Primavera P6 Certification Training",
+            "slug": "oracle-primavera-p6-certification-training",
+            "order_by": 10,
+            "category": "Project Management"
+          },
+          {
+            "image": "prince2-agile-icon.svg",
+            "id": 551,
+            "name": "PRINCE2 Agile Foundation and Practitioner Certification",
+            "slug": "prince2-agile-foundation-practitioner-certification-training",
+            "order_by": 5,
+            "category": "Project Management"
+          },
+          {
+            "image": "jira-course.svg",
+            "id": 542,
+            "name": "JIRA Certification Training",
+            "slug": "jira-certification-training",
+            "order_by": 9,
+            "category": "Project Management"
+          },
+          {
+            "image": "prince2-icon.svg",
+            "Acc": "AXELOS",
+            "hp": "y",
+            "p": "y",
+            "d": null,
+            "id": 357,
+            "label": "Best Seller",
+            "name": "PRINCE2 Foundation & Practitioner Certification (7th Edition)",
+            "slug": "prince2-foundation-practitioner-certification-training",
+            "order_by": 2,
+            "category": "Project Management"
+          },
+          {
+            "image": "business-analysis-icon.svg",
+            "Acc": "EXIN",
+            "id": 351,
+            "name": "Business Analysis Foundation and Practitioner Certification",
+            "slug": "business-analysis-certification",
+            "order_by": 7,
+            "category": "Project Management"
+          }
+        ]
+      },
+      {
+        "name": "ITSM Courses",
+        "menu_name": "ITSM Certification",
+        "image_media_path": "https://alpha.invensislearning.com/storage/Category/it-service-management-category.svg",
+        "link_title": "Read more on IT Service Management Courses in __COUNTRY__",
+        "order_by": 3,
+        "slug": "itsm-certification-courses",
+        "category_accredations": [
+          { "Accrediations": "Exinforsrcum.svg", "name": "EXIN" },
+          { "Accrediations": "Axelosnew.svg", "name": "AXELOS" }
+        ],
+        "courses": [
+          {
+            "image": "itil4-icon.svg",
+            "Acc": "AXELOS",
+            "label": "Best Seller",
+            "p": "y",
+            "d": 2,
+            "id": 43,
+            "name": "ITIL 4 Foundation",
+            "slug": "itil-4-foundation",
+            "order_by": 1,
+            "category": "IT Service Management"
+          },
+          {
+            "image": "Exinforsrcum.svg",
+            "Acc": "EXIN",
+            "p": "y",
+            "d": 2,
+            "id": 31,
+            "name": "VeriSM™ Foundation",
+            "slug": "verism-foundation-training",
+            "order_by": 2,
+            "category": "IT Service Management"
+          },
+          {
+            "image": "Exinforsrcum.svg",
+            "Acc": "EXIN",
+            "p": "y",
+            "d": 2,
+            "id": 41,
+            "name": "SIAM Foundation",
+            "slug": "siam-foundation",
+            "order_by": 3,
+            "category": "IT Service Management"
+          },
+          {
+            "image": "Exinforsrcum.svg",
+            "Acc": "EXIN",
+            "id": 42,
+            "name": "SIAM Professional",
+            "slug": "siam-professional",
+            "order_by": 4,
+            "category": "IT Service Management"
+          }
+        ]
+      },
+      {
+        "name": "Six Sigma & Quality Management",
+        "menu_name": "Six Sigma & Quality Management",
+        "image_media_path": "https://alpha.invensislearning.com/storage/Category/quality-management-category.svg",
+        "link_title": "Read more on Quality Management Courses in __COUNTRY__",
+        "order_by": 4,
+        "slug": "six-sigma-certifications-quality-management-courses",
+        "category_accredations": [
+          { "Accrediations": "iasscnew.svg", "name": "IASSC" },
+          { "Accrediations": "Exinforsrcum.svg", "name": "EXIN" }
+        ],
+        "courses": [
+          {
+            "image": "iasscnew.svg",
+            "Acc": "IASSC",
+            "label": "Best Seller",
+            "p": "y",
+            "d": 2,
+            "id": 20,
+            "name": "Lean Six Sigma Yellow Belt",
+            "slug": "lean-six-sigma-yellow-belt-certification-training",
+            "order_by": 1,
+            "category": "Quality Management"
+          },
+          {
+            "image": "iasscnew.svg",
+            "Acc": "IASSC",
+            "label": "Best Seller",
+            "hp": "y",
+            "p": "y",
+            "d": 4,
+            "id": 12,
+            "name": "Lean Six Sigma Green Belt",
+            "slug": "lean-six-sigma-green-belt-certification-training",
+            "order_by": 2,
+            "category": "Quality Management"
+          },
+          {
+            "image": "Value-Stream-Mapping.svg",
+            "id": 339,
+            "name": "Value Stream Mapping",
+            "slug": "value-stream-mapping-training",
+            "order_by": 5,
+            "category": "Quality Management"
+          },
+          {
+            "image": "Poka-Yoke.svg",
+            "id": 340,
+            "name": "Poka Yoke",
+            "slug": "poka-yoke-training",
+            "order_by": 7,
+            "category": "Quality Management"
+          },
+          {
+            "image": "Kaizen.svg",
+            "id": 341,
+            "name": "Kaizen",
+            "slug": "kaizen-training",
+            "order_by": 8,
+            "category": "Quality Management"
+          },
+          {
+            "image": "BPM-And-Six-Sigma.svg",
+            "id": 32,
+            "name": "BPM and Six Sigma",
+            "slug": "bpm-and-six-sigma-training",
+            "order_by": 9,
+            "category": "Quality Management"
+          },
+          {
+            "image": "Minitab-Essentials.svg",
+            "id": 33,
+            "name": "Minitab Essentials",
+            "slug": "minitab-essentials-training",
+            "order_by": 10,
+            "category": "Quality Management"
+          },
+          {
+            "image": "Six-Sigma-Awareness.svg",
+            "id": 34,
+            "name": "Six Sigma Awareness",
+            "slug": "six-sigma-awareness-training",
+            "order_by": 11,
+            "category": "Quality Management"
+          },
+          {
+            "image": "Design-for-Six-Sigma.svg",
+            "p": "y",
+            "d": null,
+            "id": 35,
+            "name": "Design for Six Sigma",
+            "slug": "design-for-six-sigma-training",
+            "order_by": 12,
+            "category": "Quality Management"
+          },
+          {
+            "image": "Lean-Fundamentals.svg",
+            "id": 36,
+            "name": "Lean Fundamentals",
+            "slug": "lean-fundamentals-training",
+            "order_by": 13,
+            "category": "Quality Management"
+          },
+          {
+            "image": "Exinforsrcum.svg",
+            "Acc": "EXIN",
+            "id": 37,
+            "name": "Lean IT",
+            "slug": "lean-it-training",
+            "order_by": 6,
+            "category": "Quality Management"
+          },
+          {
+            "image": "Quality-by-Design.svg",
+            "id": 38,
+            "name": "Quality by Design",
+            "slug": "quality-by-design-training",
+            "order_by": 14,
+            "category": "Quality Management"
+          },
+          {
+            "image": "Quality-Function-Deployment.svg",
+            "p": "y",
+            "d": null,
+            "id": 39,
+            "name": "Quality Function Deployment",
+            "slug": "quality-function-deployment-training",
+            "order_by": 15,
+            "category": "Quality Management"
+          },
+          {
+            "image": "RCA-through-Six-Sigma.svg",
+            "p": "y",
+            "d": null,
+            "id": 40,
+            "name": "RCA through Six Sigma",
+            "slug": "rca-through-six-sigma-training",
+            "order_by": 16,
+            "category": "Quality Management"
+          },
+          {
+            "image": "7-QC-Tools.svg",
+            "p": "y",
+            "d": null,
+            "id": 343,
+            "name": "7 QC Tools Training",
+            "slug": "7-qc-tools-training",
+            "order_by": 4,
+            "category": "Quality Management"
+          },
+          {
+            "image": "iasscnew.svg",
+            "Acc": "IASSC",
+            "label": "Best Seller",
+            "id": 13,
+            "name": "Lean Six Sigma Black Belt",
+            "slug": "lean-six-sigma-black-belt-certification-training",
+            "order_by": 3,
+            "category": "Quality Management"
+          }
+        ]
+      },
+      {
+        "name": "DevOps Courses",
+        "menu_name": "DevOps Certification",
+        "image_media_path": "https://alpha.invensislearning.com/storage/Category/devops-category.svg",
+        "link_title": "Read more on DevOps Courses in __COUNTRY__",
+        "order_by": 5,
+        "slug": "devops-certification-courses",
+        "category_accredations": [
+          { "Accrediations": "deveopsnew.svg", "name": "DevOps Institute" },
+          { "Accrediations": "Exinforsrcum.svg", "name": "EXIN" }
+        ],
+        "courses": [
+          {
+            "image": "deveopsnew.svg",
+            "Acc": "DevOps Institute",
+            "label": "Best Seller",
+            "p": "y",
+            "d": 2,
+            "id": 21,
+            "name": "DevOps Foundation",
+            "slug": "devops-foundation-certification-training",
+            "order_by": 1,
+            "category": "DevOps"
+          },
+          {
+            "image": "Exinforsrcum.svg",
+            "Acc": "EXIN",
+            "p": "y",
+            "d": 2,
+            "id": 25,
+            "name": "DevOps Master",
+            "slug": "devops-master-training",
+            "order_by": 2,
+            "category": "DevOps"
+          },
+          {
+            "image": "Exinforsrcum.svg",
+            "Acc": "EXIN",
+            "p": "y",
+            "d": 2,
+            "id": 26,
+            "name": "DevOps Professional",
+            "slug": "devops-professional-training",
+            "order_by": 3,
+            "category": "DevOps"
+          },
+          {
+            "image": "deveopsnew.svg",
+            "Acc": "DevOps Institute",
+            "p": "y",
+            "d": 2,
+            "id": 28,
+            "name": "Continuous Delivery Architecture",
+            "slug": "continuous-delivery-architecture-training",
+            "order_by": 4,
+            "category": "DevOps"
+          }
+        ]
+      },
+      {
+        "name": "IT Governance Courses",
+        "menu_name": "IT Governance Certification",
+        "image_media_path": "https://alpha.invensislearning.com/storage/Category/it-security-governance-category.svg",
+        "link_title": "Read more on IT Security & Governance Courses in __COUNTRY__",
+        "order_by": 6,
+        "slug": "it-governance-certification-courses",
+        "category_accredations": [
+          { "Accrediations": "isacanew.svg", "name": "ISACA" }
+        ],
+        "courses": [
+          {
+            "image": "CGEIT.svg",
+            "p": "y",
+            "d": 4,
+            "id": 29,
+            "name": "CGEIT",
+            "slug": "cgeit-training",
+            "order_by": 2,
+            "category": "IT Security and Governance"
+          },
+          {
+            "image": "CRISC.svg",
+            "p": "y",
+            "d": 5,
+            "id": 30,
+            "name": "CRISC",
+            "slug": "crisc-certification-training",
+            "order_by": 3,
+            "category": "IT Security and Governance"
+          },
+          {
+            "image": "isacanew.svg",
+            "label": "Best Seller",
+            "p": "y",
+            "d": 2,
+            "id": 358,
+            "name": "COBIT 5 Certification",
+            "slug": "cobit-5-certification",
+            "order_by": 1,
+            "category": "IT Security and Governance"
+          }
+        ]
+      }
+    ]
+  }
