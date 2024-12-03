@@ -23,7 +23,7 @@ const FooterCountryDropDown = () => {
   };
   return (
     <Select onValueChange={handleValueChange}>
-      <SelectTrigger className="w-[170px] bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 h-8">
+      <SelectTrigger className="w-44 bg-transparent focus:ring-0 focus:ring-offset-0 h-8">
         <SelectValue placeholder="Select a Country" />
       </SelectTrigger>
       <SelectContent className="bg-slate-200">

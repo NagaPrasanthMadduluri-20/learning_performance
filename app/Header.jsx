@@ -148,7 +148,7 @@ export default function Header({ params }) {
                 </>
               )}
               <li className={`bg-lightbackground rounded-full flex items-center p-2 ${pathName !== "/ordersummary"  ? "ml-0" : "ml-[800px]"}`}>
-                <Link target="blank" href={`/ordersummary`}>
+                <Link target="blank" href={`/ordersummary`} aria-label="order-summary">
                   <ShoppingCart size={18} fill="#6f727b" stroke="#6f727b" />
                 </Link>
               </li>

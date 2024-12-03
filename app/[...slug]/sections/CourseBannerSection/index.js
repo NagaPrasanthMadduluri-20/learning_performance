@@ -35,7 +35,7 @@ const CourseBanner = ({ CourseBannerData, additionalData }) => {
   ].includes(page_name);
   const pagePMI = page_name == "PMI-ACP Exam Prep" ? true : false;
   const pageRFF = page_name == "Project Management Fundamentals" ? true : false;
-const { theme } = useTheme();
+  const { theme } = useTheme();
   return (
     <div className="relative">
       {/* <div
@@ -44,18 +44,18 @@ const { theme } = useTheme();
           backgroundImage: `url('${contents.vector_image_webp_path}')`,
         }}
       /> */}
-{theme === 'dark' ? <div className="absolute inset-0 bg-gradient-to-b dark:from-black  dark:to-gray-700 block sm:hidden"></div> : 
-      <div className="absolute inset-0 bg-gradient-to-b from-[rgb(63,81,181)] to-[#12133D] block sm:hidden"></div> }
-      
+      {theme === "dark" ? (
+        <div className="absolute inset-0 bg-gradient-to-b dark:from-black  dark:to-gray-700 block sm:hidden"></div>
+      ) : (
+        <div className="absolute inset-0 bg-gradient-to-b from-[rgb(63,81,181)] to-[#12133D] block sm:hidden"></div>
+      )}
+
       <div className="bg-lightbackground">
         <Container className="pb-3 pt-4 sm:pt-12">
           <div className="grid grid-cols-12 relative z-10 text-primary-foreground sm:text-foreground">
             <div className="space-y-4 md:col-span-7 col-span-12">
-              <Text variant="h1" className="max-w-[600px]">
-              {contents.course_secondary_title}
-              </Text>
-        
-             
+              <Text variant="h1">{contents.course_secondary_title}</Text>
+
               <div className="list-disc"> {parse(contents.course_content)}</div>
               <div className="flex-col sm:flex sm:flex-row sm:gap-x-5 ">
                 <ScrollButton

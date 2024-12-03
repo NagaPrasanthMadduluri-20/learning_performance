@@ -130,8 +130,10 @@ const FormFields = ({ formType, isIndividual, defaultselectcourse }) => {
               <div placeholder="size of your Company">
                 <select
                   {...field}
+                  id="Company Size"
                   className={`border-2 border-gray-200 h-11 focus-visible:ring-0 focus-visible:ring-offset-0 py-0 px-2 w-full rounded-md
                 peer ${!field.value ? "text-[14px]" : ""}`}
+                aria-label="size of company"
                 >
                   <option value="" disabled hidden>
                     Size of your Company
@@ -243,6 +245,7 @@ const FormFields = ({ formType, isIndividual, defaultselectcourse }) => {
                     >
                     <Select
                       {...field}
+                      inputId="select-course"
                       options={options}
                       isMulti={true}
                       placeholder="Select Course (s)*"
@@ -271,6 +274,7 @@ const FormFields = ({ formType, isIndividual, defaultselectcourse }) => {
                   <FormItem>
                     <div>
                       <select
+                      id="trainingmode"
                         value={field.value}
                         onChange={field.onChange}
                         disabled
@@ -297,15 +301,15 @@ const FormFields = ({ formType, isIndividual, defaultselectcourse }) => {
                       className="flex gap-x-3 mt-4"
                     >
                       <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="Phone" id="Phone" />
+                        <RadioGroupItem value="Phone" id="Phone" aria-label="Contact by phone"/>
                         <Label htmlFor="Phone">Phone</Label>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="email" id="email" />
+                        <RadioGroupItem value="email" id="email" aria-label="Contact by Email" />
                         <Label htmlFor="email">Email</Label>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="Both" id="Both" />
+                        <RadioGroupItem value="Both" id="Both" aria-label="Contact by Both"/>
                         <Label htmlFor="Both">Both</Label>
                       </div>
                     </RadioGroup>
@@ -342,6 +346,7 @@ const FormFields = ({ formType, isIndividual, defaultselectcourse }) => {
                       <Checkbox
                         checked={field.value}
                         onCheckedChange={field.onChange}
+                        aria-label="checkbox"
                       />
                     </FormControl>
                     <div className="space-y-1 leading-none">

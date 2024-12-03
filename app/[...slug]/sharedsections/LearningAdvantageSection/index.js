@@ -3,8 +3,9 @@ import Container from "@/components/Container";
 import Text from "@/components/Text";
 import Image from "next/image";
 import React from "react";
-
+import parse from "html-react-parser"
 const LearningAdvantage = ({advantageData, category}) => {
+  
   const data = {
     InvlAdvantages_primaridata: "Get the Invensis Learning <b>Advantage</b>",
     InvlAdvantages: [
@@ -59,17 +60,17 @@ const LearningAdvantage = ({advantageData, category}) => {
             key={index}
             className="flex flex-col items-center gap-4 bg-background p-10 border border-blue-300 rounded-sm "
           >
-            <div className="p-5 w-[90px] h-[90px] border border-blue-500 rounded-full place-items-center flex">
+            <div className="p-5 w-24 h-24 border border-blue-500 rounded-full place-items-center flex">
               <Image
                 src={InvlAdvantages.image_url}
-                alt={InvlAdvantages.alt}
+                alt={InvlAdvantages.alt || InvlAdvantages.title}
                 width="50"
                 height="50"
               />
             </div>
 
-            <Text variant="b" className="max-w-[300px] text-center">
-              {InvlAdvantages.title}
+            <Text variant="b" className="text-center">
+              {parse(InvlAdvantages.title)}
             </Text>
           </div>
         ))}

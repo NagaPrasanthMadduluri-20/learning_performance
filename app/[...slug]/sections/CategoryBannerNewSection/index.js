@@ -1,5 +1,5 @@
+"use client";
 import React from "react";
-import { Button } from "@/components/ui/button";
 import Container from "@/components/Container";
 import Text from "@/components/Text";
 import Image from "next/image";
@@ -7,10 +7,11 @@ import { Star, UserRound } from "lucide-react";
 import SocialMediaLinks from "../SocialMediaLinks";
 import BreadCrumb from "@/app/components/BreadCrumb/BreadCrumb";
 import ScrollButton from "@/app/components/ScrollButton";
+import { useTheme } from "next-themes";
 
 const CategoryBannerNew = ({ BannerData, additionalData }) => {
   const { contents } = BannerData;
-
+  const { theme } = useTheme();
   return (
     <>
       {/* Background image - hidden on mobile */}
@@ -18,24 +19,28 @@ const CategoryBannerNew = ({ BannerData, additionalData }) => {
         <div
           className="absolute inset-0 bg-[length:60%_120%] bg-no-repeat bg-right-top hidden md:block"
           style={{
-             backgroundImage: `url('${contents.new_category_banner_image_link}')`,
+            backgroundImage: `url('${contents.new_category_banner_image_link}')`,
           }}
         />
 
         {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#121F66] dark:from-black via-[#3F51B5] dark:via-gray-900 to-transparent md:to-[rgba(63,81,181,0)]"></div>
+        {theme === "dark" ? (
+          <div className="absolute inset-0 bg-gradient-to-r dark:from-black dark:via-gray-900 to-transparent md:to-[rgba(63,81,181,0)]"></div>
+        ) : (
+          <div className="absolute inset-0 bg-gradient-to-r from-[#121F66] via-[#3F51B5] to-transparent md:to-[rgba(63,81,181,0)]"></div>
+        )}
 
         {/* Mobile gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[rgba(63,81,181,4)] dark:from-black to-[#12133D] dark:to-gray-900 md:hidden"></div>
+        {theme === "dark" ? (
+          <div className="absolute inset-0 bg-gradient-to-b dark:from-black dark:to-gray-900 md:hidden"></div>
+        ) : (
+          <div className="absolute inset-0 bg-gradient-to-b from-[rgba(63,81,181,4)] to-[#12133D] dark:to-gray-900 md:hidden"></div>
+        )}
 
-        
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-10 relative z-10">
             <div className="col-span-6">
-              <Text
-                variant="h1"
-                className="text-primary-foreground mb-6 max-w-[600px]"
-              >
+              <Text variant="h1" className="text-primary-foreground mb-6">
                 {contents.course_name}
               </Text>
               <Text
@@ -45,7 +50,14 @@ const CategoryBannerNew = ({ BannerData, additionalData }) => {
                 {contents.course_content}
               </Text>
               <div className="sm:flex sm:flex-row sm:items-start gap-x-16 flex-col mt-10">
-                <ScrollButton targetId="global-courses" variant="secondary" className="xs:mb-4 px-9"> View Courses </ScrollButton>
+                <ScrollButton
+                  targetId="global-courses"
+                  variant="secondary"
+                  className="xs:mb-4 px-9"
+                >
+                  {" "}
+                  View Courses{" "}
+                </ScrollButton>
                 <div className="flex gap-x-8 ">
                   {contents.categorybanners &&
                     contents.categorybanners.length > 0 &&
@@ -82,7 +94,7 @@ const CategoryBannerNew = ({ BannerData, additionalData }) => {
         </Container>
       </div>
       <Container className="p-0">
-        <BreadCrumb BreadCrumbData={additionalData.breadcrumb}/>
+        <BreadCrumb BreadCrumbData={additionalData.breadcrumb} />
       </Container>
     </>
   );

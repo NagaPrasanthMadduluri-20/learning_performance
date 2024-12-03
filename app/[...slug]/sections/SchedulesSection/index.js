@@ -139,7 +139,7 @@ const Schedules = ({ additionalData }) => {
           {filteredSchedules.map((schedule, scheduleindex) => (
             <div key={scheduleindex}>
               {scheduleindex === 0 ? (
-                <div className="relative -mb-[12px] sm:-mb-[16px] text-[9px] sm:text-[14px] font-bold text-primary-foreground">
+                <div className="relative -mb-3 sm:-mb-4 text-[9px] sm:text-[14px] font-bold text-primary-foreground">
                   <Image
                     src="/waiver-bg.png"
                     alt="waiver-offer"
@@ -147,9 +147,9 @@ const Schedules = ({ additionalData }) => {
                     height={30}
                     className="w-[370px] h-[20px] sm:w-[520px] sm:h-[30px]"
                   />{" "}
-                  <div className="absolute top-[3px] ml-1 md:ml-3 flex items-center text-[9px] sm:text-[14px] whitespace-nowrap">
+                  <div className="absolute top-0.5 ml-1 md:ml-3 flex items-center text-[9px] sm:text-[14px] whitespace-nowrap">
                     {" "}
-                    <span className="absolute top-[-10px] bottom-0 left-0 h-[65px] w-[20px] flex items-center justify-center bg-white blur-[10px] opacity-70 rotate-45 white-fade-animation"></span>
+                    <span className="absolute -top-3 bottom-0 left-0 h-16 w-5 flex items-center justify-center bg-white blur-md opacity-70 rotate-45 white-fade-animation"></span>
                     <span className="text-yellow-400 text-[9px] sm:text-[14px]">
                       SPECIAL OFFER:{" "}
                     </span>{" "}
@@ -157,7 +157,7 @@ const Schedules = ({ additionalData }) => {
                     <TooltipProvider>
                       {" "}
                       <Tooltip>
-                        <TooltipTrigger>
+                        <TooltipTrigger aria-label="more-info">
                           {" "}
                           <Info
                             color="#ffffff"
@@ -166,7 +166,7 @@ const Schedules = ({ additionalData }) => {
                             className="ml-2"
                           />
                         </TooltipTrigger>{" "}
-                        <TooltipContent className="font-medium w-[300px]">
+                        <TooltipContent className="font-medium w-96 whitespace-normal text-center">
                           <b> Discount Offer - Terms & Conditions:</b>
                           <Text className="text-[12px] ">
                             {" "}
