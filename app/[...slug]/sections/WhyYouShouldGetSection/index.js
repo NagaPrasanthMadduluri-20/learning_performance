@@ -4,6 +4,7 @@ import Text from "@/components/Text";
 import { MoveRight } from "lucide-react";
 import Image from "next/image";
 import React from "react";
+import parse from "html-react-parser";
 
 const WhyYouShouldGet = ({ WhyYouShouldGetData }) => {
   const { contents } = WhyYouShouldGetData;
@@ -11,7 +12,7 @@ const WhyYouShouldGet = ({ WhyYouShouldGetData }) => {
     <div id="why-pmp">
     <Container className="py-2">
       <Text variant="h2" className="mb-4">
-        {contents.heading}
+        {parse(contents.heading)}
       </Text>
       <div className="bg-[#f5f5f5] dark:bg-highlightdarkbackground">
         <div className="grid md:grid-flow-col flex-col">
@@ -34,12 +35,12 @@ const WhyYouShouldGet = ({ WhyYouShouldGetData }) => {
                     className="max-h-[50px]"
                   />
                   <Text className="text-[20px] font-semibold">
-                    {item.title}
+                    {parse(item.title)}
                   </Text>
                 </div>
                 <div>
                   <Text className="font-semibold my-4">{item?.subTitle}</Text>
-                  <Text className="gap-x-1">{item.content}</Text>
+                  <Text className="gap-x-1">{parse(item.content)}</Text>
                 </div>
               </div>
             </>

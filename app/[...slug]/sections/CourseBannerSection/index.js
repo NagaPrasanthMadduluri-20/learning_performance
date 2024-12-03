@@ -11,6 +11,8 @@ import React from "react";
 import BreadCrumb from "@/app/components/BreadCrumb/BreadCrumb";
 import Schema from "@/lib/schema";
 import ScrollButton from "@/app/components/ScrollButton";
+import { useTheme } from "next-themes";
+import parse from "html-react-parser";
 
 const CourseBanner = ({ CourseBannerData, additionalData }) => {
   const { contents } = CourseBannerData;
@@ -33,7 +35,7 @@ const CourseBanner = ({ CourseBannerData, additionalData }) => {
   ].includes(page_name);
   const pagePMI = page_name == "PMI-ACP Exam Prep" ? true : false;
   const pageRFF = page_name == "Project Management Fundamentals" ? true : false;
-
+const { theme } = useTheme();
   return (
     <div className="relative">
       {/* <div
@@ -42,17 +44,19 @@ const CourseBanner = ({ CourseBannerData, additionalData }) => {
           backgroundImage: `url('${contents.vector_image_webp_path}')`,
         }}
       /> */}
-
-      <div className="absolute inset-0 bg-gradient-to-b from-[rgb(63,81,181)] dark:from-black to-[#12133D] dark:to-gray-700 sm:hidden"></div>
+{theme === 'dark' ? <div className="absolute inset-0 bg-gradient-to-b dark:from-black  dark:to-gray-700 block sm:hidden"></div> : 
+      <div className="absolute inset-0 bg-gradient-to-b from-[rgb(63,81,181)] to-[#12133D] block sm:hidden"></div> }
+      
       <div className="bg-lightbackground">
         <Container className="pb-3 pt-4 sm:pt-12">
           <div className="grid grid-cols-12 relative z-10 text-primary-foreground sm:text-foreground">
             <div className="space-y-4 md:col-span-7 col-span-12">
               <Text variant="h1" className="max-w-[600px]">
-                HELLO, I AM HEADING
+              {contents.course_secondary_title}
               </Text>
-
-              <Text className="">HI, I am Content</Text>
+        
+             
+              <div className="list-disc"> {parse(contents.course_content)}</div>
               <div className="flex-col sm:flex sm:flex-row sm:gap-x-5 ">
                 <ScrollButton
                   variant="secondary"
@@ -131,7 +135,7 @@ const CourseBanner = ({ CourseBannerData, additionalData }) => {
                   </div>
                 ))}
 
-                {/* {textAccreditations.map((item, index) => (
+                {textAccreditations.map((item, index) => (
                   <div
                     className="row-span-1 col-span-1 hidden md:block w-[80%]"
                     key={index}
@@ -139,14 +143,14 @@ const CourseBanner = ({ CourseBannerData, additionalData }) => {
                     {item.instuctor === "text" ||
                     item.instuctor != undefined ? (
                       <>
-                        {item.Accrediations}
-                        <Text>{item.AccrediationsTitle}</Text>
+                        {parse(item.Accrediations)}
+                        <Text>{item.AccrediationsTitle} </Text>
                       </>
                     ) : (
                       <Avatar src={item.Accrediations} key={index} />
                     )}
                   </div>
-                ))} */}
+                ))}
 
                 {contents.Pay_Once_Attend_Twice !== "disable" && (
                   <div className="row-span-1 col-span-3 hidden md:block">

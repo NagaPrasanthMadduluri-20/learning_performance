@@ -1,5 +1,4 @@
 import { Montserrat } from "next/font/google";
-import Head from "next/head";
 import "./styles/globals.css";
 import Header from "./Header";
 import { ThemeProvider } from "@/components/theme-provider";
