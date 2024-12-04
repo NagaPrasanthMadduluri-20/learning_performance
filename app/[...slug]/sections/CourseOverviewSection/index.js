@@ -1,7 +1,6 @@
 "use client";
 import Container from "@/components/Container";
 import Text from "@/components/Text";
-import Link from "next/link";
 import React, { useState } from "react";
 import parse from "html-react-parser";
 
@@ -34,13 +33,12 @@ const CourseOverview = ({ courseOverviewData }) => {
         >
           {parse(isShowMore ? contents.loadmore_para : truncatedText)}
           {contents.loadmore_para.length > maxCharsToShow && (
-            <Link
-            href=""
+            <span
               className="font-semibold cursor-pointer text-blue-600 underline"
               onClick={toggleReadMoreLess}
             >
               {isShowMore ? "...read less" : "....read more"}
-            </Link>
+            </span>
           )}
         </Text>
       )}

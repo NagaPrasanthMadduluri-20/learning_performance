@@ -1,9 +1,7 @@
 import {
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
@@ -23,8 +21,8 @@ const FooterCountryDropDown = () => {
   };
   return (
     <Select onValueChange={handleValueChange}>
-      <SelectTrigger className="w-44 bg-transparent focus:ring-0 focus:ring-offset-0 h-8">
-        <SelectValue placeholder="Select a Country" />
+      <SelectTrigger className="w-44 bg-transparent focus:ring-0 focus:ring-offset-0 h-8 " >
+        <SelectValue placeholder="Select a Country" aria-label="country-dropdown"/>
       </SelectTrigger>
       <SelectContent className="bg-slate-200">
         {appData?.countries?.map((country, countryIndex) => (

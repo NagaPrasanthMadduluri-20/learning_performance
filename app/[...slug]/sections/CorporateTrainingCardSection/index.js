@@ -23,7 +23,7 @@ const CorporateTrainingCard = () => {
             </ScrollButton>
             <ScrollButton
               variant="outline"
-              className="bg-background hover:bg-background/90 hover:text-secondary text-secondary w-auto px-2 py-0"
+              className="bg-background hover:contrast-100 hover:text-secondary dark:text-primary-foreground text-secondary w-auto px-2 py-0"
               targetId="inquireform"
             >
               Inquire Now <MoveRight size={15} className="ml-1" />

@@ -94,7 +94,7 @@ const CourseTrainingDeliveryOptions = () => {
           />
           <Button
             variant="outline"
-            className="p-6 mt-6 w-full text-[18px] text-primary border-blue-500 font-normal"
+            className="p-6 mt-6 w-full text-[18px] text-primary dark:text-primary-foreground border-blue-500 font-normal"
           >
             Contact Course Advisor
           </Button>

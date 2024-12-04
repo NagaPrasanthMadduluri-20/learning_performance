@@ -23,18 +23,18 @@ const OffersComponent = ({ OffersData, Offerindex }) => {
       </div>
       {Offerindex == 0 ? (
         <>
-          <div className="text-green-700 text-[10px] flex font-bold md:items-center gap-x-1 mt-1 ">
+          <div className="text-green-700  dark:text-[#008000] brightness-125 text-[10px] flex font-bold md:items-center gap-x-1 mt-1 ">
             <CircleCheck size={15} fill="#008000" stroke="#fff" /> Special Offer
             Applied{" "}
           </div>
-          <div className="text-red-500 text-[10px] font-bold mt-1">
+          <div className="text-red-500 brightness-125 text-[10px] font-bold mt-1">
             Hurry Up!!! Limited Seats Left{" "}
           </div>{" "}
         </>
       ) : (
         <>
           {offerApplied ? (
-            <div className="text-green-700 text-[10px] flex font-bold items-center gap-x-1 mt-1">
+            <div className="text-green-700 dark:text-[#008000] text-[10px] flex font-bold items-center gap-x-1 mt-1">
               <CircleCheck size={15} fill="#008000" stroke="#fff" /> 10% Coupon
               Discount Applied!{" "}
             </div>
@@ -52,7 +52,7 @@ const OffersComponent = ({ OffersData, Offerindex }) => {
                   Apply
                 </span>
               </div>
-              {!offerApplied ? (  <div className="text-[10px] font-semibold text-green-700">
+              {!offerApplied ? (  <div className="text-[10px] font-semibold text-green-700 dark:text-[#008000]">
                 Recieve 10% Discount
               </div>) : ""}
             </>

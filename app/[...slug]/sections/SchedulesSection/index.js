@@ -201,7 +201,7 @@ const Schedules = ({ additionalData }) => {
                             {" "}
                             {dates.name}{" "}
                           </Text>
-                          <span className="text-[10px] md:text-[11px] text-primary bg-lightbackground rounded-md font-semibold py-1 px-1">
+                          <span className="text-[10px] md:text-[11px] dark:text-primary-foreground text-primary bg-lightbackground rounded-md font-semibold py-1 px-1">
                             {schedule.event_type}
                           </span>
                         </div>

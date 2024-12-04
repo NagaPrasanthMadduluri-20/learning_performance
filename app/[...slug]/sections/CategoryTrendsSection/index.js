@@ -147,6 +147,7 @@ const DotNavigation = ({ slides, currentSlide, onDotClick }) => (
           currentSlide === index ? "bg-secondary" : "bg-gray-300"
         }`}
         onClick={() => onDotClick(index)}
+        aria-label="Dot-navigation-buttons"
       />
     ))}
   </div>

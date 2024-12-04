@@ -72,7 +72,7 @@ const CourseBanner = ({ CourseBannerData, additionalData }) => {
 
                 <ScrollButton
                   variant="outline"
-                  className="p-6 text-[18px] w-full rounded-sm bg-background hover:text-primary text-primary border-blue-500 xs:mt-4 sm:mt-0"
+                  className="p-6 text-[18px] w-full rounded-sm bg-background hover:text-primary dark:text-primary-foreground text-primary border-blue-500 xs:mt-4 sm:mt-0"
                   targetId="inquireform"
                 >
                   {" "}

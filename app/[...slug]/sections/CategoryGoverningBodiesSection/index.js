@@ -44,6 +44,7 @@ const CategoryGoverningBodies = ({
                       className="inline-flex items-center justify-between shadow-lg gap-2 bg-background data-[state=active]:bg-primary data-[state=active]:text-primary-foreground mb-0 md:mb-5 h-14 px-4 min-w-[150px] md:w-[90%]"
                       key={index}
                       value={item.name}
+                      aria-label= {`accreditation-of-${item.name}`}
                     >
                       <Image
                         src={item.icon}

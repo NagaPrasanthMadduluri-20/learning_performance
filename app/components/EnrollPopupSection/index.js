@@ -39,7 +39,7 @@ const EnrollPopup = ({ scheduleindex }) => {
               <DialogTrigger
                 className={`w-full text-primary-foreground px-2 flex items-center justify-center rounded-md mb-2 h-10 md:h-12 ${
                   scheduleindex === 0
-                    ? "bg-secondary hover:bg-secondary/80"
+                    ? "bg-secondary hover:bg-secondary/80 dark:bg-[#Ec7601] hover:dark:bg-[#ec7601]/80"
                     : "bg-[#00c24e] hover:bg-[#00c24e]/80 "
                 } align-middle`}
               >

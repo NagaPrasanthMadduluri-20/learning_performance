@@ -53,7 +53,7 @@ const FormFields = ({ formType, isIndividual, defaultselectcourse }) => {
     preferredContact: "Phone",
     message: "",
     jobtitle: "",
-    terms: false,
+    terms: true,
     ...(isIndividual ? {} : { Company: "", SizeofComapny: "" }),
   };
 
@@ -234,9 +234,10 @@ const FormFields = ({ formType, isIndividual, defaultselectcourse }) => {
                 control={form.control}
                 render={({ field }) => (
                   <FormItem>
+                  
                      <Suspense
                       fallback={
-                        <select className="border-2 border-gray-200 h-11 focus-visible:ring-0 focus-visible:ring-offset-0 py-0 px-2 w-full text-[14px] font-montserrat rounded-md text-gray-500">
+                        <select id="select-course" className="border-2 border-gray-200 h-11 focus-visible:ring-0 focus-visible:ring-offset-0 py-0 px-2 w-full text-[14px] font-montserrat rounded-md text-gray-500">
                           <option value="" disabled>
                             Select Course(s)*
                           </option>
@@ -249,7 +250,7 @@ const FormFields = ({ formType, isIndividual, defaultselectcourse }) => {
                       options={options}
                       isMulti={true}
                       placeholder="Select Course (s)*"
-                      className="rounded-2xl h-auto py-1 font-montserrat text-[14px]"
+                      className="rounded-2xl min-h-11 h-auto py-1 font-montserrat text-[14px]"
                       instanceId="select-course"
                       value={field?.value} // This should now default to the page_name option
                       onChange={(selectedOptions) =>
@@ -274,13 +275,13 @@ const FormFields = ({ formType, isIndividual, defaultselectcourse }) => {
                   <FormItem>
                     <div>
                       <select
-                      id="trainingmode"
+                        id="trainingmode"
                         value={field.value}
                         onChange={field.onChange}
                         disabled
                         className="border-2 border-gray-200 h-11 focus-visible:ring-0 focus-visible:ring-offset-0 py-0 px-2 w-full rounded-md font-montserrat text-[14px]"
                       >
-                        <option>Live Virtual Classroom</option>
+                        <option value="live-virtual-classroom">Live Virtual Classroom</option>
                       </select>
                     </div>
                     <FormMessage className="text-[12px] !mt-0" />
@@ -347,6 +348,7 @@ const FormFields = ({ formType, isIndividual, defaultselectcourse }) => {
                         checked={field.value}
                         onCheckedChange={field.onChange}
                         aria-label="checkbox"
+                        className="w-6 h-6"
                       />
                     </FormControl>
                     <div className="space-y-1 leading-none">
