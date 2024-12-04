@@ -234,7 +234,6 @@ const FormFields = ({ formType, isIndividual, defaultselectcourse }) => {
                 control={form.control}
                 render={({ field }) => (
                   <FormItem>
-                  
                      <Suspense
                       fallback={
                         <select id="select-course" className="border-2 border-gray-200 h-11 focus-visible:ring-0 focus-visible:ring-offset-0 py-0 px-2 w-full text-[14px] font-montserrat rounded-md text-gray-500">
@@ -244,9 +243,16 @@ const FormFields = ({ formType, isIndividual, defaultselectcourse }) => {
                         </select>
                       }
                     >
+                      <Label 
+                        htmlFor="trainingmode" 
+                         className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 sr-only"
+                          >
+                          Select Course
+                      </Label>
                     <Select
                       {...field}
                       inputId="select-course"
+                      aria-label="Select Course"
                       options={options}
                       isMulti={true}
                       placeholder="Select Course (s)*"
@@ -272,10 +278,16 @@ const FormFields = ({ formType, isIndividual, defaultselectcourse }) => {
                 control={form.control}
                 name="trainingMode"
                 render={({ field }) => (
-                  <FormItem>
-                    <div>
+                    <FormItem>
+                      <Label 
+                        htmlFor="trainingmode" 
+                         className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 sr-only"
+                          >
+                          Training Mode
+                      </Label>
                       <select
                         id="trainingmode"
+                        aria-label="Select training mode"
                         value={field.value}
                         onChange={field.onChange}
                         disabled
@@ -283,7 +295,6 @@ const FormFields = ({ formType, isIndividual, defaultselectcourse }) => {
                       >
                         <option value="live-virtual-classroom">Live Virtual Classroom</option>
                       </select>
-                    </div>
                     <FormMessage className="text-[12px] !mt-0" />
                   </FormItem>
                 )}
@@ -302,15 +313,15 @@ const FormFields = ({ formType, isIndividual, defaultselectcourse }) => {
                       className="flex gap-x-3 mt-4"
                     >
                       <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="Phone" id="Phone" aria-label="Contact by phone"/>
+                        <RadioGroupItem value="Phone" id="Phone" aria-label="Contact by phone" className="w-5 h-5"/>
                         <Label htmlFor="Phone">Phone</Label>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="email" id="email" aria-label="Contact by Email" />
+                        <RadioGroupItem value="email" id="email" aria-label="Contact by Email" className="w-5 h-5"/>
                         <Label htmlFor="email">Email</Label>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="Both" id="Both" aria-label="Contact by Both"/>
+                        <RadioGroupItem value="Both" id="Both" aria-label="Contact by Both" className="w-5 h-5"/>
                         <Label htmlFor="Both">Both</Label>
                       </div>
                     </RadioGroup>

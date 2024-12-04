@@ -42,6 +42,8 @@ const EnrollPopup = ({ scheduleindex }) => {
                     ? "bg-secondary hover:bg-secondary/80 dark:bg-[#Ec7601] hover:dark:bg-[#ec7601]/80"
                     : "bg-[#00c24e] hover:bg-[#00c24e]/80 "
                 } align-middle`}
+                id="Enroll now"
+                aria-label="enroll now"
               >
                 Enroll Now
               </DialogTrigger>
