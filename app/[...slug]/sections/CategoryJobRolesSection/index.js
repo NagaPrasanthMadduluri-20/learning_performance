@@ -119,10 +119,10 @@ const CategoryJobRoles = ({
                     )}
                   </div>
 
-                  <ul className="mt-4 space-y-8">
-                    {KnowAboutContents.categoryknowabouts?.map(
-                      (jobRole, index) => (
-                        <>
+                  {KnowAboutContents.categoryknowabouts?.map(
+                    (jobRole, index) => (
+                      <div key={index}>
+                        <ul className="mt-4 space-y-8">
                           <li key={index} className="">
                             <Text variant="h3" className="!text-[20px] mb-2">
                               {" "}
@@ -131,25 +131,25 @@ const CategoryJobRoles = ({
 
                             <Text> {jobRole.course_description} </Text>
                           </li>
-                          <div className="flex flex-col gap-y-3 sm:flex-row sm:gap-x-8">
-                            <Link href={jobRole.page_slug}>
+                        </ul>
+                        <div className="flex flex-col gap-y-3 sm:flex-row sm:gap-x-8">
+                          <Link href={jobRole.page_slug}>
+                            {" "}
+                            <Button variant="secondary">
+                              {jobRole.link_title}
+                            </Button>
+                          </Link>
+                          <Link href={jobRole.download_brochure_link}>
+                            {" "}
+                            <Button variant="outline">
                               {" "}
-                              <Button variant="secondary">
-                                {jobRole.link_title}
-                              </Button>
-                            </Link>
-                            <Link href={jobRole.download_brochure_link}>
-                              {" "}
-                              <Button variant="outline">
-                                {" "}
-                                Download Brochure{" "}
-                              </Button>
-                            </Link>
-                          </div>
-                        </>
-                      )
-                    )}
-                  </ul>
+                              Download Brochure{" "}
+                            </Button>
+                          </Link>
+                        </div>
+                      </div>
+                    )
+                  )}
                 </>
               )}
             </ExpandableContent>

@@ -22,6 +22,8 @@ const CategoryGoverningBodies = ({
     return () => clearTimeout(timer);
   }, []);
 
+  const createSafeId = (name) => name.toLowerCase().replace(/[^a-z0-9]/g, "-");
+
   return (
     <div className="bg-lightbackground">
       <Container>
@@ -39,11 +41,14 @@ const CategoryGoverningBodies = ({
             >
               <div className="flex min-w-full">
                 <TabsList className="md:col-span-5 flex flex-row gap-x-2 md:flex-col h-auto bg-transparent w-fit md:w-full">
-                  {governingBodies.map((item, index) => (
+                  {governingBodies.map((item, index) => {
+                    const safeId = createSafeId(item);
                     <TabsTrigger
                       className="inline-flex items-center justify-between shadow-lg gap-2 bg-background data-[state=active]:bg-primary data-[state=active]:text-primary-foreground mb-0 md:mb-5 h-14 px-4 min-w-[150px] md:w-[90%]"
                       key={index}
                       value={item.name}
+                      id={`tab-${safeId}`}
+                      aria-controls={`content-${safeId}`}
                       aria-label={`View details for ${item.name} governing body`}
                     >
                       <Image
@@ -57,19 +62,23 @@ const CategoryGoverningBodies = ({
                       <span className="hidden md:flex">
                         <MoveRight />
                       </span>
-                    </TabsTrigger>
-                  ))}
+                    </TabsTrigger>;
+                  })}
                 </TabsList>
               </div>
               <ScrollBar orientation="horizontal" className="md:hidden" />
             </ScrollArea>
           </div>
 
-          {governingBodies.map((item, index) => (
+          {governingBodies.map((item, index) => {
+            const safeId = createSafeId(item.name);
             <TabsContent
-              className="md:col-span-7 bg-background shadow-lg"
-              key={index}
+              key={`content-${safeId}`}
               value={item.name}
+              id={`content-${safeId}`}
+              aria-labelledby={`tab-${safeId}`}
+              className="md:col-span-7 bg-background shadow-lg"
+              role="tabpanel"
             >
               <ScrollArea className="h-80 w-full rounded-md border p-5">
                 {item.descriptions.map((descrp, descriptionIndex) => (
@@ -79,7 +88,12 @@ const CategoryGoverningBodies = ({
                       isTransitioning ? "opacity-0" : "opacity-100"
                     }`}
                   >
-                    <Text className="max-w-none">{descrp.description}</Text>
+                    <Text
+                      className="max-w-none"
+                      aria-label={`Description for ${item.name}`}
+                    >
+                      {descrp.description}
+                    </Text>
                     <div className="flex-shrink-0">
                       <Image
                         src={descrp.image}
@@ -92,8 +106,8 @@ const CategoryGoverningBodies = ({
                   </div>
                 ))}
               </ScrollArea>
-            </TabsContent>
-          ))}
+            </TabsContent>;
+          })}
         </Tabs>
       </Container>
     </div>

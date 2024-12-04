@@ -244,7 +244,7 @@ const FormFields = ({ formType, isIndividual, defaultselectcourse }) => {
                       }
                     >
                       <Label 
-                        htmlFor="trainingmode" 
+                        htmlFor="select-course" 
                          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 sr-only"
                           >
                           Select Course

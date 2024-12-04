@@ -234,6 +234,8 @@ const StickyNavigationBar = ({ isCourse }) => {
                 variant="ghost"
                 onClick={toggleMenu}
                 className="text-primary-foreground"
+                aria-label="Menu Toggle"
+                id="Menu"
               >
                 {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
               </Button>
