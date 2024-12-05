@@ -70,7 +70,6 @@ const CategoryGoverningBodies = ({
           </div>
 
           {governingBodies.map((item, index) => {
-            const safeId = createSafeId(item.name);
             <TabsContent
               key={index}
               value={item.name}
