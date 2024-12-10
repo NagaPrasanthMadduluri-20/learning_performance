@@ -127,7 +127,10 @@
     /* @apply w-full max-w-6xl mx-auto; */
   }
   /* Custom scrollbar styles */
-
+  .course-banner {
+    @apply visible;
+    @apply object-contain; /* Estimate of content height */
+  }
   .info-description b {
     @apply my-3 font-bold;
   }

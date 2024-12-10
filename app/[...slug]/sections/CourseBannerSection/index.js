@@ -37,7 +37,7 @@ const CourseBanner = ({ CourseBannerData, additionalData }) => {
   const pageRFF = page_name == "Project Management Fundamentals" ? true : false;
   const { theme } = useTheme();
   return (
-    <div className="relative">
+    <div className="relative course-banner">
       {/* <div
         className="absolute inset-0 top-10 right-44 bg-[length:33%_80%] bg-no-repeat bg-right-top hidden md:block "
         style={{
@@ -52,8 +52,8 @@ const CourseBanner = ({ CourseBannerData, additionalData }) => {
 
       <div className="bg-lightbackground">
         <Container className="pb-3 pt-4 sm:pt-12">
-          <div className="grid grid-cols-12 relative z-10 text-primary-foreground sm:text-foreground">
-            <div className="space-y-4 md:col-span-7 col-span-12">
+          <div className="flex flex-col md:grid md:grid-cols-12 relative z-10 text-primary-foreground sm:text-foreground">
+            <div className="space-y-4 w-full md:col-span-7">
               <Text variant="h1">{contents.course_secondary_title}</Text>
 
               <div className="list-disc"> {parse(contents.course_content)}</div>
@@ -166,13 +166,13 @@ const CourseBanner = ({ CourseBannerData, additionalData }) => {
                 )}
               </div>
             </div>
-            <div className="sm:col-span-5 col-span-0 md:flex hidden">
+            <div className="md:col-span-5 md:flex hidden">
               <Image
                 src={contents.vector_image_webp_path}
                 alt="course-banner"
-                width={500}
-                height={800}
-                className="max-w-[90%] h-[85%]"
+                width={300}
+                height={450}
+                className="w-[420px] h-[500px] ml-10"
                 priority
               />
             </div>
