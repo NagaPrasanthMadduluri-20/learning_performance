@@ -17,7 +17,8 @@ import { generateDynamicMetadata } from "@/lib/dynamicmetadata";
 
 export async function generateMetadata() {
   const { RefundPolicyData: getRefundPolicyData } = await getRefundPolicy();
-  return generateDynamicMetadata(getRefundPolicyData);
+  const slug = getRefundPolicyData.page_slug
+  return generateDynamicMetadata(getRefundPolicyData, null, slug);
 };
 
 const RefundPolicy = async () => {

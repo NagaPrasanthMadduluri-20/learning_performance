@@ -50,17 +50,18 @@ function parsePathParams(params) {
   return { lang };
 }
 
-export async function generateMetadata({params}) {
+export async function generateMetadata({ params }) {
   const { lang } = params;
+  const slug = 'courses';
   const { AllCoursesData: getAllCoursesData } = await getCourses(lang);
-  return generateDynamicMetadata(getAllCoursesData);
-};
+
+  return generateDynamicMetadata(getAllCoursesData, lang, slug);
+}
 
 export default async function Page({ params }) {
   const { lang } = parsePathParams(params);
 
   let getAllCoursesData, error;
-  console.log("courses", getAllCoursesData);
   ({ AllCoursesData: getAllCoursesData, error } = await getCourses(lang));
   if (error) {
     return <div>Error: {error.message}</div>;

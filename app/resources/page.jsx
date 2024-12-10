@@ -11,7 +11,8 @@ const templatemapping = {
 
 
 export function generateMetadata() {
-  return generateDynamicMetadata(ResourcesapiData);
+  const slug = ResourcesapiData.page_slug;
+  return generateDynamicMetadata(ResourcesapiData, null, slug);
 };
 
 const Resources = () => {

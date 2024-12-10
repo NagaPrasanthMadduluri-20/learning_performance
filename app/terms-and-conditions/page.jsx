@@ -374,7 +374,8 @@ const templateMapping = {
 
 export async function generateMetadata() {
   const { TermsandconditionsData: getTermsandconditionsData } = await getTermsandconditions();
-  return generateDynamicMetadata(getTermsandconditionsData);
+  const slug = getTermsandconditionsData.page_slug;
+  return generateDynamicMetadata(getTermsandconditionsData, null, slug);
 };
 
 const TermsAndConditions = async () => {

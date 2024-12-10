@@ -19,7 +19,8 @@ const templatemapping = {
   };
   export async function generateMetadata() {
     const { JoinAsATrainerData: getJoinAsATrainerData } = await JoinAsATrainerapi();
-    return generateDynamicMetadata(getJoinAsATrainerData);
+    const slug = getJoinAsATrainerData.page_slug;
+    return generateDynamicMetadata(getJoinAsATrainerData, null, slug);
   };
 
 const JoinAsATrainer = async () => {

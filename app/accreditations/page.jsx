@@ -14,7 +14,8 @@ const templateMapping = {
 
   export async function generateMetadata() {
     const { AccreditationData: getAccreditationData } = await getAccreditations();
-    return generateDynamicMetadata(getAccreditationData);
+    const slug = getAccreditationData.page_slug;
+    return generateDynamicMetadata(getAccreditationData, null, slug);
   };
 
 const Accreditations = async() => {

@@ -40,7 +40,9 @@ const templateMapping = {
 
 export async function generateMetadata() {
   const { corporateGroupTrainingData: getcorporateGroupTrainingData } = await CorporategroupTraining();
-  return generateDynamicMetadata(getcorporateGroupTrainingData);
+  const slug = getcorporateGroupTrainingData.page_slug;
+  const lang = getcorporateGroupTrainingData.country_code || null;
+  return generateDynamicMetadata(getcorporateGroupTrainingData, lang, slug);
 };
 
 const CorporateGroupTraining = async () => {

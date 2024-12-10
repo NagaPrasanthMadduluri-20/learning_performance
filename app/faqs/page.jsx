@@ -8,10 +8,12 @@ const templateMapping = {
     <FaqsComponent additionalData={globaldata} />
   ),
 };
+
 export async function generateMetadata() {
   const { FaqsData: getFaqsData } = await getfaqs();
-  return generateDynamicMetadata(getFaqsData);
-}
+  const slug = getFaqsData.page_slug;
+  return generateDynamicMetadata(getFaqsData, null, slug);
+};
 
 const Faqs = async () => {
   let getFaqsData, error;

@@ -19,7 +19,8 @@ const templateMapping = {
 export async function generateMetadata({params}) {
   const { slug } = params;
   const { infoDetailData: getinfodetaildata } = await getInfoDetail(slug);
-  return generateDynamicMetadata(getinfodetaildata);
+  const currentslug = `info/${slug}`;
+  return generateDynamicMetadata(getinfodetaildata, null, currentslug);
 };
 
 const InfoChild = async({params}) => {

@@ -8,7 +8,8 @@ import { generateDynamicMetadata } from '@/lib/dynamicmetadata';
 
 export async function generateMetadata() {
   const { PrivacyPolicyData: getPrivacyPolicyData } = await getPrivacyPolicy()
-  return generateDynamicMetadata(getPrivacyPolicyData);
+  const slug = getPrivacyPolicyData.page_slug;
+  return generateDynamicMetadata(getPrivacyPolicyData, null, slug);
   };
 
 const PrivacyPolicy = async () => {

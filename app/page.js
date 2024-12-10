@@ -10,6 +10,8 @@ import { categoriesData } from "@/data/categories";
 import Container from "@/components/Container";
 import ContextUpdater from "@/context/ContextUpdater";
 import CorporateUpskillSliderSection from "./[...slug]/sharedsections/CorporateUpskillSliderSection";
+import { getCanonicalUrl } from "@/lib/getCanonicalUrl";
+import { appData } from "@/data/appData";
 
 
 
@@ -63,6 +65,32 @@ export async function generateStaticParams() {
 function parsePathParams(params) {
   const lang = params.lang || null;
   return { lang };
+}
+
+  
+export async function generateMetadata({ params }) {
+  
+  const { slug, lang, city } = params;
+
+   // Generate language alternatives
+   const languageAlternates = appData.countries.reduce((acc, country) => {
+    const countryUrl = getCanonicalUrl(slug, country.code, city);
+    // Use country code for hreflang, with special handling for US
+    const hreflang = country.code === 'us' ? 'en-US' : `en-${country.code.toUpperCase()}`;
+    
+    acc[hreflang] = countryUrl;
+    return acc;
+  }, {
+    // Add x-default link (optional, but recommended)
+    'x-default': getCanonicalUrl(slug, null, city)
+  });
+
+  return {
+    alternates: {
+      canonical: getCanonicalUrl(slug, lang, city),
+      languages: languageAlternates
+    }
+  }
 }
 
 export default async function Page ({ params }) {

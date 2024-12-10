@@ -8,6 +8,7 @@ import { appData } from "@/data/appData";
 import CoursesScreen from "./screens/CountryCoursesScreen";
 import { shouldShowNotFound } from "@/lib/pageValidation";
 import { fetchPageData } from "@/lib/fetchingpagedata";
+import { getCanonicalUrl } from "@/lib/getCanonicalUrl";
 
 
 
@@ -110,6 +111,20 @@ export async function generateMetadata({ params }) {
   const { lang, slug, city } = parsePathParams(params);
   const { data } = await fetchPageData(slug, lang, city);
 
+  // Generate language alternatives
+  const languageAlternates = appData.countries.reduce((acc, country) => {
+    const countryUrl = getCanonicalUrl(slug, country.code, city);
+    // Use country code for hreflang, with special handling for US
+    const hreflang = country.code === 'us' ? 'en-US' : `en-${country.code.toUpperCase()}`;
+    
+    acc[hreflang] = countryUrl;
+    return acc;
+  }, {
+    // Add x-default link (optional, but recommended)
+    'x-default': getCanonicalUrl(slug, null, city)
+  });
+
+
   if (!data?.pageSeos) {
     return {
       title: "Certification Training Courses | ITIL, PMP, PRINCE2, Six Sigma, COBIT 5 | Invensis Learning",
@@ -123,6 +138,10 @@ export async function generateMetadata({ params }) {
     openGraph: {},
     twitter: {},
     keywords: "",
+    alternates: {
+      canonical: getCanonicalUrl(slug, lang, city),
+      languages: languageAlternates
+    },
   };
 
   data.pageSeos.forEach((seo) => {

@@ -13,7 +13,8 @@ const templateMapping = {
   export async function generateMetadata({params}) {
     const { slug } = params;
     const { UpskillDetailData: getUpskillDetailData } = await getUpskillDetails(slug);
-    return generateDynamicMetadata(getUpskillDetailData);
+    const currentslug = `upskill/${slug}`
+    return generateDynamicMetadata(getUpskillDetailData, null, currentslug);
   };
 
 const UpskillDetails = async({params}) => {

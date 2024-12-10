@@ -16,7 +16,8 @@ const templateMapping = {
   
   export async function generateMetadata() {
     const { ContactUsData: getContactUsData } = await getContactUs();
-    return generateDynamicMetadata(getContactUsData);
+    const slug = getContactUsData.page_slug;
+    return generateDynamicMetadata(getContactUsData, null, slug);
   };
 
   const ContactUs = async() => {

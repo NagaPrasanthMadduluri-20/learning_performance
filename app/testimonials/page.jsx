@@ -14,7 +14,9 @@ const templateMapping = {
 export async function generateMetadata() {
   // Testimonials Page
   const { TestimonialData: getTestimonialData } = await getTestimonials();
-  return generateDynamicMetadata(getTestimonialData);
+  const slug = getTestimonialData.page_slug;
+
+  return generateDynamicMetadata(getTestimonialData, null, slug);
 };
 
 const Testimonials = async () => {

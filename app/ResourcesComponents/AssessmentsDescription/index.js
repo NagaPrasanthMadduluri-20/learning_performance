@@ -9,7 +9,7 @@ import React from "react";
 const AssessmentsDescription = ({ AssessmentDescription, additionalData }) => {
   const { contents } = AssessmentDescription;
   const { AllAssessment } = additionalData;
-  const pathname = usePathname();
+  const pathName = usePathname();
   //console.log("path", pathname);
   return (
     <>
@@ -33,7 +33,7 @@ const AssessmentsDescription = ({ AssessmentDescription, additionalData }) => {
                     <Link href={item.page_slug} className="">
                       <div
                         className={`mb-3 p-2 font-semibold inline-flex border-2 rounded-md shadow-md w-[80%] ${
-                          pathname === `/assesments/${item.page_slug}`
+                          pathName === `/assesments/${item.page_slug}`
                             ? "bg-primary text-primary-foreground"
                             : ""
                         }`}

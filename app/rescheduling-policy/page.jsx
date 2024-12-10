@@ -159,7 +159,8 @@ const templateMapping = {
 
 export async function generateMetadata() {
   const { ReschedulingPolicyData: getReschedulingPolicyData } = await getReschedulingPolicy();
-  return generateDynamicMetadata(getReschedulingPolicyData);
+  const slug = getReschedulingPolicyData.page_slug;
+  return generateDynamicMetadata(getReschedulingPolicyData, null, slug);
 };
 
 const ReschedulingPolicy = async () => {

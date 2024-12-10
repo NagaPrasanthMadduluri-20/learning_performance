@@ -1,8 +1,10 @@
 "use client"
 
+import Container from "@/components/Container"
+
 const Error = () => {
   return (
-    <div>Errorpage</div>
+    <Container>Errorpage</Container>
   )
 }
 
