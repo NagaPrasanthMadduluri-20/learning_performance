@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { lazy, Suspense, useState } from "react";
 import {
   Accordion,
   AccordionContent,
@@ -10,23 +10,38 @@ import {
 import Link from "next/link";
 const generic_menu = require('../data/menu.json');
 import { ChevronRight } from "lucide-react";
-import Drawer from "@/app/components/drawercustom";
 import Text from "@/components/Text";
 import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
 
+// Lazy load the Drawer component
+const Drawer = lazy(() => import("@/app/components/drawercustom"));
+
+
 const Mobilemenu = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isExploreCourses, setIsExploreCourses] = useState(false);
+  const [isDrawerLoaded, setIsDrawerLoaded] = useState(false);
+
+  const handleDrawerOpen = () => {
+    // Load drawer on first open
+    if (!isDrawerLoaded) {
+      setIsDrawerLoaded(true);
+    }
+    setIsDrawerOpen(true);
+  };
+
   return (
     <div>
-      <div onClick={() => setIsDrawerOpen(true)}>
+      <div onClick={handleDrawerOpen}>
         <div className="flex flex-col gap-y-[2px]">
           <div className="w-5 h-1 bg-[#0000008a] dark:bg-slate-50 rounded-sm" />
           <div className="w-5 h-1 bg-[#0000008a] dark:bg-slate-50 rounded-sm" />
           <div className="w-5 h-1 bg-[#0000008a] dark:bg-slate-50 rounded-sm" />
         </div>
       </div>
+      {isDrawerLoaded && 
+      <Suspense fallback={<div>Loading...</div>}>
       <Drawer
         isOpen={isDrawerOpen}
         onClose={() => setIsDrawerOpen(false)}
@@ -155,6 +170,8 @@ const Mobilemenu = () => {
           </Text>
         </div>
       </Drawer>
+      </Suspense>
+      }
     </div>
   );
 };
