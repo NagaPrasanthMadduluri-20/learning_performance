@@ -19,7 +19,7 @@ const CourseOverview = ({ courseOverviewData }) => {
     : "";
 
   return (
-    <div id="course-overview">
+    <div id="course-overview" className="course-banner">
     <Container>
     <div>
       <Text variant="h2">{parse(contents.new_heading)}</Text>
