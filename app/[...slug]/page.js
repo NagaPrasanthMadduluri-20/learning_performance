@@ -11,44 +11,12 @@ import { fetchPageData } from "@/lib/fetchingpagedata";
 import { getCanonicalUrl } from "@/lib/getCanonicalUrl";
 
 
-
-
-// export async function generateStaticParams() {
-//   const params = [];
-
-//   // Handle categories
-//   categoriesData?.categories?.forEach((category) => {
-//     params.push({ slug: [category.slug] });
-//     appData?.countries?.forEach((country) => {
-//       params.push({ slug: [country.code, category.slug] });
-//     });
-//   });
-
-//   // Handle courses with cities
-//   categoriesData?.courses.forEach((course) => {
-//     params.push({ slug: [course.slug] });
-//     appData?.countries?.forEach((country) => {
-//       params.push({ slug: [country.code, course.slug] });
-//       // Add city params if country has cities
-//       const countryCities = country.cities || [];
-//       countryCities.forEach((city) => {
-//         params.push({ slug: [country.code, course.slug, city.short_name] });
-//       });
-//     });
-//   });
-//   return params;
-// }
-
-
 export async function generateStaticParams() {
   const params = [];
 
   // Handle categories
   categoriesData?.categories?.forEach((category) => {
-    // Generic category page
     params.push({ slug: [category.slug] });
-
-    // Category pages for each country
     appData?.countries?.forEach((country) => {
       params.push({ slug: [country.code, category.slug] });
     });
@@ -56,40 +24,69 @@ export async function generateStaticParams() {
 
   // Handle courses with cities
   categoriesData?.courses.forEach((course) => {
-    // Generic course page
     params.push({ slug: [course.slug] });
-
-    // Course pages for each country
     appData?.countries?.forEach((country) => {
-      // Country-specific course page
       params.push({ slug: [country.code, course.slug] });
-
-      // Course pages for cities in the country
+      // Add city params if country has cities
       const countryCities = country.cities || [];
       countryCities.forEach((city) => {
-        params.push({ 
-          slug: [country.code, course.slug, city.short_name] 
-        });
+        params.push({ slug: [country.code, course.slug, city.short_name] });
       });
     });
   });
-
-  // Add country home pages
-  appData?.countries?.forEach((country) => {
-    params.push({ slug: [country.code] });
-  });
-
-  // Add generic pages
-  params.push({ slug: ['courses'] });
-
   return params;
 }
 
-// Revalidation configuration
-export const revalidate = 3600; // Revalidate every hour
-// Or for more granular control:
-export const dynamicParams = true; // Allow generating pages not pre-rendered at build time
 
+// export async function generateStaticParams() {
+//   const params = [];
+
+//   // Handle categories
+//   categoriesData?.categories?.forEach((category) => {
+//     // Generic category page
+//     params.push({ slug: [category.slug] });
+
+//     // Category pages for each country
+//     appData?.countries?.forEach((country) => {
+//       params.push({ slug: [country.code, category.slug] });
+//     });
+//   });
+
+//   // Handle courses with cities
+//   categoriesData?.courses.forEach((course) => {
+//     // Generic course page
+//     params.push({ slug: [course.slug] });
+
+//     // Course pages for each country
+//     appData?.countries?.forEach((country) => {
+//       // Country-specific course page
+//       params.push({ slug: [country.code, course.slug] });
+
+//       // Course pages for cities in the country
+//       const countryCities = country.cities || [];
+//       countryCities.forEach((city) => {
+//         params.push({ 
+//           slug: [country.code, course.slug, city.short_name] 
+//         });
+//       });
+//     });
+//   });
+
+//   // Add country home pages
+//   appData?.countries?.forEach((country) => {
+//     params.push({ slug: [country.code] });
+//   });
+
+//   // Add generic pages
+//   params.push({ slug: ['courses'] });
+
+//   return params;
+// }
+
+// // Revalidation configuration
+// export const revalidate = 3600; // Revalidate every hour
+// // Or for more granular control:
+// export const dynamicParams = true; // Allow generating pages not pre-rendered at build time
 
 
 function parsePathParams(params) {
