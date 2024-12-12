@@ -7,7 +7,6 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-  useCarousel,
 } from "@/components/ui/carousel";
 import { Card, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import Container from "@/components/Container";

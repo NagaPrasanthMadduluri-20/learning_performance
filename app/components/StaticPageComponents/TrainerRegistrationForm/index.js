@@ -277,6 +277,15 @@ const TrainerRegistrationForm = ({ formType }) => {
                   control={form.control}
                   render={({ field }) => (
                     <FormItem>
+                       <Suspense
+                      fallback={
+                        <select id="select-course" className="border-2 border-gray-200 h-11 focus-visible:ring-0 focus-visible:ring-offset-0 py-0 px-2 w-full text-[14px] font-montserrat rounded-md text-gray-500">
+                          <option value="" disabled>
+                            Select Course(s)*
+                          </option>
+                        </select>
+                      }
+                    >
                       <Select
                         {...field}
                         options={options}
@@ -292,6 +301,7 @@ const TrainerRegistrationForm = ({ formType }) => {
                         }
                       }}
                       />
+                      </Suspense>
                       <FormMessage className="text-[12px] !mt-0" />
                     </FormItem>
                   )}

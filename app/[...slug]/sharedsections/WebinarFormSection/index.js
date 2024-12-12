@@ -60,7 +60,6 @@ const WebinarFormSection = ({ formType }) => {
       lastname: "",
       email: "",
       phoneNumber: "",
-      selectedCourse: [],
       trainingMode: "live-virtual-classroom",
       preferredContact: "Phone",
       message: "",

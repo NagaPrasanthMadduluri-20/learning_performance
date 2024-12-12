@@ -4,7 +4,6 @@ import ExpandableContent from "@/app/components/ExpandableComponent";
 import NotFound from "@/app/not-found";
 import { Check } from "lucide-react";
 import React from "react";
-import Text from "@/components/Text";
 
 const SkillsGain = ({
   SkillsGainData,
