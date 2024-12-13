@@ -10,13 +10,9 @@ import { ChevronDown, Info } from "lucide-react";
 import ScheduleTopComponent from "./ScheduleTopComponent";
 import ExpandableContent from "@/app/components/ExpandableComponent";
 import Image from "next/image";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-} from "@/components/ui/tooltip";
-import { TooltipTrigger } from "@radix-ui/react-tooltip";
+
 import EnrollPopup from "@/app/components/EnrollPopupSection";
+import Tooltip from "@/components/ui/tooltip";
 
 const schedules = require("../../../../data/schedules.json");
 
@@ -154,28 +150,27 @@ const Schedules = ({ additionalData }) => {
                       SPECIAL OFFER:{" "}
                     </span>{" "}
                     &nbsp;Flat 15% Discount + 4% Processing Fees Waiver{" "}
-                    <TooltipProvider>
-                      {" "}
-                      <Tooltip>
-                        <TooltipTrigger aria-label="more-info">
-                          {" "}
-                          <Info
-                            color="#ffffff"
-                            absoluteStrokeWidth
-                            size={15}
-                            className="ml-2"
-                          />
-                        </TooltipTrigger>{" "}
-                        <TooltipContent className="font-medium w-96 whitespace-normal text-center">
+                    <Tooltip
+                    className="mr-3"
+                      content={
+                        <div className="font-medium w-72 whitespace-normal text-center mr-3">
                           <b> Discount Offer - Terms & Conditions:</b>
                           <Text className="text-[12px] ">
                             {" "}
                             “Special offer is not applicable for a group of 5 or
                             more participants”
                           </Text>
-                        </TooltipContent>{" "}
-                      </Tooltip>
-                    </TooltipProvider>
+                        </div>
+                      }
+                      position="top"
+                    >
+                      <Info
+                        color="#ffffff"
+                        absoluteStrokeWidth
+                        size={15}
+                        className="ml-2 mt-1"
+                      />
+                    </Tooltip>
                   </div>{" "}
                 </div>
               ) : (
@@ -236,10 +231,8 @@ const Schedules = ({ additionalData }) => {
                       </div>
                     </div>
                   </div>
-                  
-                   
-                
-                  <EnrollPopup scheduleindex={scheduleindex}/>
+
+                  <EnrollPopup scheduleindex={scheduleindex} />
                 </div>
 
                 <div className="flex justify-between sm:justify-normal items-start sm:gap-x-14 mt-3">

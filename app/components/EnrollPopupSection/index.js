@@ -12,13 +12,9 @@ import { Separator } from "@radix-ui/react-dropdown-menu";
 import Image from "next/image";
 import { Info, LockKeyhole } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+
 import Link from "next/link";
+import Tooltip from "@/components/ui/tooltip";
 
 const EnrollPopup = ({ scheduleindex }) => {
   return (
@@ -34,7 +30,7 @@ const EnrollPopup = ({ scheduleindex }) => {
               <Text className="text-[12px] font-semibold"> Onsite/Virtual</Text>
             </Button>
           </div>
-          <div className="w-full md:w-[40%] order-1 sm:order-2 ">
+          <div className="w-full md:w-[40%] order-1 sm:order-2">
             <Dialog>
               <DialogTrigger
                 className={`w-full text-primary-foreground px-2 flex items-center justify-center rounded-md mb-2 h-10 md:h-12 ${
@@ -74,25 +70,27 @@ const EnrollPopup = ({ scheduleindex }) => {
                       className="mx-auto my-5"
                     />
                     <div className="flex flex-col space-y-6 md:flex-row md:space-y-0 gap-1 text-center mx-auto w-[80%] relative">
-                      <div className="absolute left-[48%] top-24 md:top-4 bg-background px-1 py-1 text-[13px] font-medium">
-                        OR
-                      </div>
                       <div className="absolute -right-10 top-32 md:top-4">
-                        <TooltipProvider>
-                          <Tooltip>
-                            <TooltipTrigger>
-                              <Info />
-                            </TooltipTrigger>
-                            <TooltipContent className="w-[300px] text-left font-semibold">
-                              <p>
+                        <Tooltip
+                          className="!bg-transparent border-0"
+                          content={
+                            <div className="absolute right-0 -top-5 md:right-56 md:-top-48 w-[200px] md:w-[300px] bg-background p-2 text-[12px] font-semibold rounded-lg">
+                              <p className="bg-transparent">
                                 You can Generate and Download a Proforma invoice
                                 for the selected course. Make Payment when you
                                 are Ready
                               </p>
-                            </TooltipContent>
-                          </Tooltip>
-                        </TooltipProvider>
+                            </div>
+                          }
+                          position="top"
+                        >
+                          <Info />
+                        </Tooltip>
                       </div>
+                      <div className="absolute left-[48%] top-24 md:top-4 bg-background px-1 py-1 text-[13px] font-medium">
+                        OR
+                      </div>
+
                       <div className="bg-[#00c24e] text-primary-foreground rounded-none h-14 w-[90%] md:w-[50%] mx-auto pt-2 cursor-pointer">
                         <Link href="/ordersummary">
                           Pay Online
@@ -117,6 +115,7 @@ const EnrollPopup = ({ scheduleindex }) => {
                         </Link>
                       </div>
                     </div>
+
                     <div className="flex items-start mr-1 mt-6">
                       <LockKeyhole size={12} className="mt-1" />
                       <Text className="text-[10px]">
@@ -139,3 +138,4 @@ const EnrollPopup = ({ scheduleindex }) => {
 };
 
 export default EnrollPopup;
+
