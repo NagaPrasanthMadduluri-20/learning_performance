@@ -26,8 +26,6 @@ import { options } from "@/data/options";
 import { getFormSchema } from "@/lib/formschema";
 import { PhoneNumberInput } from "./PhoneNumberInput";
 
-
-
 // Dynamically import react-select
 const Select = lazy(() => import("react-select"));
 
@@ -42,13 +40,13 @@ const FormFields = ({ formType, isIndividual, defaultselectcourse }) => {
     email: "",
     phoneNumber: "",
     selectedCourse: defaultselectcourse
-    ? [
-        {
-          value: defaultselectcourse,
-          label: defaultselectcourse,
-        }
-      ]
-    : [],
+      ? [
+          {
+            value: defaultselectcourse,
+            label: defaultselectcourse,
+          },
+        ]
+      : [],
     trainingMode: "live-virtual-classroom",
     preferredContact: "Phone",
     message: "",
@@ -63,20 +61,20 @@ const FormFields = ({ formType, isIndividual, defaultselectcourse }) => {
     defaultValues,
   });
 
-    // Custom styles with lazy loading consideration
-    const customStyles = {
-      control: (provided, state) => ({
-        ...provided,
-        backgroundColor: state.isFocused ? "white" : "transparent",
-      }),
-    };
+  // Custom styles with lazy loading consideration
+  const customStyles = {
+    control: (provided, state) => ({
+      ...provided,
+      backgroundColor: state.isFocused ? "white" : "transparent",
+    }),
+  };
 
   const onSubmit = async (data) => {
-       // Dynamically import both the component and its styles
-       if (!isSelectLoaded) {
-        await Promise.all([import("react-select")]);
-        setIsSelectLoaded(true);
-      }
+    // Dynamically import both the component and its styles
+    if (!isSelectLoaded) {
+      await Promise.all([import("react-select")]);
+      setIsSelectLoaded(true);
+    }
     setIsSubmitting(true);
     try {
       await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -133,7 +131,7 @@ const FormFields = ({ formType, isIndividual, defaultselectcourse }) => {
                   id="Company Size"
                   className={`border-2 border-gray-200 h-11 focus-visible:ring-0 focus-visible:ring-offset-0 py-0 px-2 w-full rounded-md
                 peer ${!field.value ? "text-[14px]" : ""}`}
-                aria-label="size of company"
+                  aria-label="size of company"
                 >
                   <option value="" disabled hidden>
                     Size of your Company
@@ -219,6 +217,9 @@ const FormFields = ({ formType, isIndividual, defaultselectcourse }) => {
                         placeholder="Enter Your Email*"
                         className="border-2 border-gray-200 h-11 focus-visible:ring-0 focus-visible:ring-offset-0 py-0"
                         {...field}
+                        id="email"
+                        name="email"
+                        aria-label="Email"
                       />
                     </FormControl>
                     <FormMessage className="text-[12px] !mt-0" />
@@ -234,41 +235,44 @@ const FormFields = ({ formType, isIndividual, defaultselectcourse }) => {
                 control={form.control}
                 render={({ field }) => (
                   <FormItem>
-                     <Suspense
+                    <Suspense
                       fallback={
-                        <select id="select-course" className="border-2 border-gray-200 h-11 focus-visible:ring-0 focus-visible:ring-offset-0 py-0 px-2 w-full text-[14px] font-montserrat rounded-md text-gray-500">
+                        <select
+                          id="select-course"
+                          className="border-2 border-gray-200 h-11 focus-visible:ring-0 focus-visible:ring-offset-0 py-0 px-2 w-full text-[14px] font-montserrat rounded-md text-gray-500"
+                        >
                           <option value="" disabled>
                             Select Course(s)*
                           </option>
                         </select>
                       }
                     >
-                      <Label 
-                        htmlFor="select-course" 
-                         className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 sr-only"
-                          >
-                          Select Course
+                      <Label
+                        htmlFor="select-course"
+                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 sr-only"
+                      >
+                        Select Course
                       </Label>
-                    <Select
-                      {...field}
-                      inputId="select-course"
-                      aria-label="Select Course"
-                      options={options}
-                      isMulti={true}
-                      placeholder="Select Course (s)*"
-                      className="rounded-2xl min-h-11 h-auto py-1 font-montserrat text-[14px]"
-                      instanceId="select-course"
-                      value={field?.value} // This should now default to the page_name option
-                      onChange={(selectedOptions) =>
-                        field.onChange(selectedOptions)
-                      }
-                       // Optional: Load styles when interacted
-                       onMenuOpen={async () => {
-                        if (!isSelectLoaded) {
-                          setIsSelectLoaded(true);
+                      <Select
+                        {...field}
+                        inputId="select-course"
+                        aria-label="Select Course"
+                        options={options}
+                        isMulti={true}
+                        placeholder="Select Course (s)*"
+                        className="rounded-2xl min-h-11 h-auto py-1 font-montserrat text-[14px]"
+                        instanceId="select-course"
+                        value={field?.value} // This should now default to the page_name option
+                        onChange={(selectedOptions) =>
+                          field.onChange(selectedOptions)
                         }
-                      }}
-                    />
+                        // Optional: Load styles when interacted
+                        onMenuOpen={async () => {
+                          if (!isSelectLoaded) {
+                            setIsSelectLoaded(true);
+                          }
+                        }}
+                      />
                     </Suspense>
                     <FormMessage className="text-[12px] !mt-0" />
                   </FormItem>
@@ -278,23 +282,25 @@ const FormFields = ({ formType, isIndividual, defaultselectcourse }) => {
                 control={form.control}
                 name="trainingMode"
                 render={({ field }) => (
-                    <FormItem>
-                      <Label 
-                        htmlFor="trainingmode" 
-                         className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 sr-only"
-                          >
-                          Training Mode
-                      </Label>
-                      <select
-                        id="trainingmode"
-                        aria-label="Select training mode"
-                        value={field.value}
-                        onChange={field.onChange}
-                        disabled
-                        className="border-2 border-gray-200 h-11 focus-visible:ring-0 focus-visible:ring-offset-0 py-0 px-2 w-full rounded-md font-montserrat text-[14px]"
-                      >
-                        <option value="live-virtual-classroom">Live Virtual Classroom</option>
-                      </select>
+                  <FormItem>
+                    <Label
+                      htmlFor="trainingmode"
+                      className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 sr-only"
+                    >
+                      Training Mode
+                    </Label>
+                    <select
+                      id="trainingmode"
+                      aria-label="Select training mode"
+                      value={field.value}
+                      onChange={field.onChange}
+                      disabled
+                      className="border-2 border-gray-200 h-11 focus-visible:ring-0 focus-visible:ring-offset-0 py-0 px-2 w-full rounded-md font-montserrat text-[14px]"
+                    >
+                      <option value="live-virtual-classroom">
+                        Live Virtual Classroom
+                      </option>
+                    </select>
                     <FormMessage className="text-[12px] !mt-0" />
                   </FormItem>
                 )}
@@ -305,24 +311,62 @@ const FormFields = ({ formType, isIndividual, defaultselectcourse }) => {
               name="preferredContact"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Select the Preferred Contact</FormLabel>
+                  <Label htmlFor="preferredContact" id="contact-method">
+                    Select the Preferred Contact
+                  </Label>
                   <FormControl>
                     <RadioGroup
                       onValueChange={field.onChange}
                       defaultValue={field.value}
                       className="flex gap-x-3 mt-4"
+                      name="preferredContact"
+                      id="preferredContact"
+                      aria-labelledby="contact-method"
                     >
                       <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="Phone" id="Phone" aria-label="Contact by phone" className="w-5 h-5"/>
-                        <Label htmlFor="Phone">Phone</Label>
+                        <RadioGroupItem
+                          value="Phone"
+                          id="preferredContact-phone"
+                          name="preferredContact-phone"
+                          aria-labelledby="contact-method preferredContact-phone-label"
+                          className="w-5 h-5"
+                        />
+                        <Label
+                          id="preferredContact-phone-label"
+                          htmlFor="preferredContact-phone"
+                        >
+                          Phone
+                        </Label>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="email" id="email" aria-label="Contact by Email" className="w-5 h-5"/>
-                        <Label htmlFor="email">Email</Label>
+                        <RadioGroupItem
+                          value="email"
+                          id="preferredContact-email"
+                          name="preferredContact-email"
+                          aria-labelledby="contact-method preferredContact-email-label"
+                          className="w-5 h-5"
+                        />
+                        <Label
+                          id="preferredContact-email-label"
+                          htmlFor="preferredContact-email"
+                        >
+                          Email
+                        </Label>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="Both" id="Both" aria-label="Contact by Both" className="w-5 h-5"/>
-                        <Label htmlFor="Both">Both</Label>
+                        <RadioGroupItem
+                          value="Both"
+                          id="preferredContact-both"
+                          name="preferredContact-both"
+                          aria-labelledby="contact-method preferredContact-both-label"
+                          className="w-5 h-5"
+                        />
+                        <Label
+                          id="preferredContact-both-label"
+                          htmlFor="preferredContact-both"
+                        >
+                          Both
+                        </Label>
                       </div>
                     </RadioGroup>
                   </FormControl>
@@ -358,15 +402,17 @@ const FormFields = ({ formType, isIndividual, defaultselectcourse }) => {
                       <Checkbox
                         checked={field.value}
                         onCheckedChange={field.onChange}
-                        aria-label="checkbox"
+                        aria-labelledby="terms-description"
+                        id="terms-checkbox"
+                        name="terms-checkbox"
                         className="w-6 h-6"
                       />
                     </FormControl>
                     <div className="space-y-1 leading-none">
-                      <FormLabel>
+                      <Label htmlFor="terms-checkbox" id="terms-description">
                         I agree to receive communication on newsletters,
                         discount, offers, updates, events, promotions, etc.
-                      </FormLabel>
+                      </Label>
                       <FormDescription>
                         By clicking Submit, you agree to our Terms of
                         Conditions, Privacy Policy.
