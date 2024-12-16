@@ -22,7 +22,6 @@ const HardEarnedExpertize = ({
     TrainingPossibleContent?.trainingpossibilities ||
     CommitmentContent?.ourcommitments ||
     [];
-
   return (
     <div className={`${CommitmentData ? "bg-lightbackground" : "bg-background"} `}>
     <Container>
@@ -51,7 +50,7 @@ const HardEarnedExpertize = ({
               <div className={`flex ${CommitmentContent ? "justify-start" : "justify-center "}`}>
                 <Image
                   src={item.icon_url || item.iconUrl || ""}
-                  alt={item.imgHeading}
+                  alt={item.imgHeading || item.title}
                   width={100}
                   height={100}
                   className={`${HandEarnedContent || CommitmentContent  ? "w-24 h-24" : "w-48 h-48"}`}

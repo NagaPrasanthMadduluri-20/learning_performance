@@ -1,4 +1,3 @@
-import React from "react";
 import { CorporategroupTraining } from "@/services";
 import StaticPageBanner from "../components/StaticPageComponents/StaticPageBanner";
 import EnterprizeSection from "../components/StaticPageComponents/enterprizesection";

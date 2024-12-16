@@ -155,7 +155,7 @@ export function SearchBar({ searchData }) {
                     <X className="text-gray-500" />
                   </button>
                 ) : (
-                  <button type="submit" className="cursor-pointer">
+                  <button type="submit" className="cursor-pointer" id="search" >
                     <Search className="text-gray-500" />
                   </button>
                 )}

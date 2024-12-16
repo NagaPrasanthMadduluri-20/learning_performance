@@ -3,7 +3,6 @@ import Text from "@/components/Text";
 import { appData } from "@/data/appData";
 import { categoriesData } from "@/data/categories";
 import Link from "next/link";
-import React from "react";
 
 const CoursesCitySitemap = () => {
   return (

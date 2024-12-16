@@ -1,7 +1,6 @@
 import ScrollButton from "@/app/components/ScrollButton";
 import Container from "@/components/Container";
 import Text from "@/components/Text";
-import { Button } from "@/components/ui/button";
 import { MoveRight } from "lucide-react";
 import React from "react";
 
@@ -11,7 +10,7 @@ const CorporateTrainingBanner = ({
 }) => {
   const { contents } = CorporateTrainingBannerData;
   return (
-    <div className="bg-[#2d222ecc] md:bg-[url('/corporate_newbg.jpg')]">
+    <div className="bg-[#2d222ecc] md:bg-[url('/corporate_newbg.webp')] md:bg-cover md:bg-no-repeat">
       <Container>
         <div className="grid grid-cols-10">
           <div className="md:col-span-4"></div>
@@ -33,7 +32,13 @@ const CorporateTrainingBanner = ({
               </Text>
             )}
             {contents?.content ? (
-              <Text> {contents?.content} </Text>
+              <>
+           <Text className="text-primary-foreground mb-4 md:mb-10"> {contents?.content} </Text>
+           <ScrollButton variant="secondary" targetId="inquireform">
+           Request for Corporate Group Training{" "}
+           <MoveRight className="ml-3 items-center" />{" "}
+         </ScrollButton>
+         </>
             ) : (
               <>
                 {" "}

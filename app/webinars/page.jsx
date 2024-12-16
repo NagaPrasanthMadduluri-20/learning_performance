@@ -1,8 +1,5 @@
 
-import Text from '@/components/Text'
-import Link from 'next/link'
 import React from 'react'
-import Container from '../../components/Container'
 import { getWebinar } from '@/services'
 import WebinarBanner from '../ResourcesComponents/WebinarBanner'
 import { generateDynamicMetadata } from '@/lib/dynamicmetadata'
@@ -29,7 +26,9 @@ const WebinarMetaData = {
 ]
 }
 export async function generateMetadata() {
-  return generateDynamicMetadata(WebinarMetaData);
+  const {webinarData : getwebinardata} = await getWebinar();
+  const slug = getwebinardata.page_slug;
+  return generateDynamicMetadata(WebinarMetaData, null, slug);
 };
 
 const Webinars = async() => {

@@ -112,6 +112,7 @@ const StaticPageBanner = ({
             )}
             {buttonContent ? (
               <ScrollButton
+                id = "text"
                 variant={variantType}
                 className={`border-blue-500 ${
                   corporateContent ? "text-primary" : "text-primary-foreground"

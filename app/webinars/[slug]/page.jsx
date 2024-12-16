@@ -1,7 +1,6 @@
 import WebinarDetailBanner from "@/app/ResourcesComponents/WebinarDetailBanner";
 import { generateDynamicMetadata } from "@/lib/dynamicmetadata";
 import { getWebinarDetail } from "@/services";
-import React from "react";
 
 const templateMapping = {
   WebinarDetail: ({ content, globaldata }) => (
@@ -22,8 +21,8 @@ export async function generateMetadata({ params }) {
       }
     ];
   }
-
-  return generateDynamicMetadata(getwebinardetaildata);
+  const currentslug = `webinars/${slug}`;
+  return generateDynamicMetadata(getwebinardetaildata, null, currentslug);
 }
 
 const WebinarDetail = async ({ params }) => {

@@ -26,7 +26,6 @@
 
 // export default StarRating;
 
-import React from 'react';
 import { Star } from 'lucide-react';
 
 const StarRating = ({ rating, maxRating = 5 }) => {

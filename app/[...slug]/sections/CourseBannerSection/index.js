@@ -37,7 +37,7 @@ const CourseBanner = ({ CourseBannerData, additionalData }) => {
   const pageRFF = page_name == "Project Management Fundamentals" ? true : false;
   const { theme } = useTheme();
   return (
-    <div className="relative course-banner">
+    <div className="relative course-Banner">
       {/* <div
         className="absolute inset-0 top-10 right-44 bg-[length:33%_80%] bg-no-repeat bg-right-top hidden md:block "
         style={{

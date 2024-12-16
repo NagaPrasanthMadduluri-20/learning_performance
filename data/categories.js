@@ -76,6 +76,11 @@ export const categoriesData = {
       category: "project-management-certification-courses",
     },
     {
+      slug: "change-management-certification",
+      name: "Change Management Certification",
+      category: "project-management-certification-courses",
+    },
+    {
       slug: "project-management-fundamentals-training",
       name: "project Management Fundamentals",
       category: "project-management-certification-courses",
