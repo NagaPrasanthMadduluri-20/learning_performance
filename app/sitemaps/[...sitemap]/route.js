@@ -2,6 +2,24 @@
 import { appData } from "@/data/appData";
 import { categoriesData } from "@/data/categories";
 
+
+// Generate static params based on the existing sitemap types
+export function generateStaticParams() {
+  const sitemapTypes = [
+    'home-sitemap.xml',
+    'course-countries-sitemap.xml',
+    'course-cities-sitemap.xml',
+    'course-categories-sitemap.xml', 
+    'resources-sitemap.xml',
+    'sitemap_index.xml'
+  ];
+
+  return sitemapTypes.map(sitemap => ({
+    sitemap: [sitemap]
+  }));
+}
+
+
 export async function GET(request, { params }) {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
   const currentDate = new Date().toISOString();

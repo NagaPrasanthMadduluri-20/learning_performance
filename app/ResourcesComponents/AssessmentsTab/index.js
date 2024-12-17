@@ -33,7 +33,7 @@ const AssessmentsTab = ({ additionalData }) => {
         {activeTab === 'category' ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-7 mt-10">
             {AssessmentTab.assessment_categories?.map((category, catindex) => (
-             <Link key={catindex} href={`assesments/${category.page_slug}`}>   
+             <Link key={catindex} href={`assessments/${category.page_slug}`}>   
               <div className="relative group">
                 <Image
                   src={category.icon_url}
@@ -54,7 +54,7 @@ const AssessmentsTab = ({ additionalData }) => {
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-7 mt-10">
             {AssessmentTab.assessment_roles?.map((role, catindex) => (
-                   <Link key={catindex} href={`assesments/${role.page_slug}`}>   
+                   <Link key={catindex} href={`assessments/${role.page_slug}`}>   
               <div key={catindex} className="relative group">
                 <Image
                   src={role.icon_url}

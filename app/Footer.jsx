@@ -215,11 +215,11 @@ const Footer = () => {
             title:
               "Click Here to Explore Our Certification and Training Programs",
           },
-          {
-            name: "Blog",
-            href: "/blog/",
-            title: "Click Here to View Blog Articles",
-          },
+          // {
+          //   name: "Blog",
+          //   href: "/blog/",
+          //   title: "Click Here to View Blog Articles",
+          // },
           {
             name: "Resources",
             href: "/resources/",

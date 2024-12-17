@@ -302,7 +302,7 @@ export async function getBlogDetails(slug) {
     }
 
     const data = await res.json();
-    console.log(data);
+    console.log("blog detail" , data);
     return { blogDetailsData: data, error: null };
   } catch (error) {
     console.error("Error in getBlog:", error);

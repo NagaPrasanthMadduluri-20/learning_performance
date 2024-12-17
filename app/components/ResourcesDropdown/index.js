@@ -29,18 +29,18 @@ const ResourcesDropdown = () => {
           </Link>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="mt-6 bg-lightbackground">
-          <DropdownMenuItem asChild onSelect={(e) => e.preventDefault()}>
+          {/* <DropdownMenuItem asChild onSelect={(e) => e.preventDefault()}>
             <Link href="/webinars" target='blank' className="w-full hover:bg-primary/80 hover:!text-primary-foreground cursor-pointer">Webinars</Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem asChild onSelect={(e) => e.preventDefault()}>
+          </DropdownMenuItem> */}
+          {/* <DropdownMenuItem asChild onSelect={(e) => e.preventDefault()}>
             <Link href="/blog" target='blank' className="w-full hover:bg-primary/80 hover:!text-primary-foreground cursor-pointer">Blogs</Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem asChild onSelect={(e) => e.preventDefault()}>
+          </DropdownMenuItem> */}
+          {/* <DropdownMenuItem asChild onSelect={(e) => e.preventDefault()}>
             <Link href="/info" target='blank' className="w-full hover:bg-primary/80 hover:!text-primary-foreground cursor-pointer">Info Articles</Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem asChild onSelect={(e) => e.preventDefault()}>
-            <Link href="/assesments" target='blank' className="w-full hover:bg-primary/80 hover:!text-primary-foreground cursor-pointer">Assessments</Link>
-          </DropdownMenuItem>
+          </DropdownMenuItem> */}
+          {/* <DropdownMenuItem asChild onSelect={(e) => e.preventDefault()}>
+            <Link href="/assessments" target='blank' className="w-full hover:bg-primary/80 hover:!text-primary-foreground cursor-pointer">Assessments</Link>
+          </DropdownMenuItem> */}
         </DropdownMenuContent>
       </DropdownMenu>
     </li>

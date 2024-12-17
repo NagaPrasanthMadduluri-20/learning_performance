@@ -59,8 +59,8 @@ const AssessmentCard = ({ assessment, isFlipped, onClick }) => {
                 <MoveDown strokeWidth={3} size={25} />
               </div>
             </div>
-            <Link
-              href={`/assesments/${assessment.page_slug}`}
+            {/* <Link
+              href={`/assessments/${assessment.page_slug}`}
               className="block"
             >
               <button
@@ -69,7 +69,7 @@ const AssessmentCard = ({ assessment, isFlipped, onClick }) => {
               >
                 Start Now
               </button>
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>

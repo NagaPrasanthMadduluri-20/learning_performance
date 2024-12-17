@@ -29,7 +29,7 @@ const ResourcesList = () => {
       title: "Assessments",
       image:
         "https://stagingbeta.invensislearning.com/static/images/resources/icons/article.svg",
-      href: "/assesments",
+      href: "/assessments",
     },
   ];
   return (
