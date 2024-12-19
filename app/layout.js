@@ -8,6 +8,7 @@ import LazyScript from "./components/LazyScript"; // Import the new component
 import StoreProvider from "./components/StoreProvider";
 import Offerlabel from "./components/offerlabel";
 import { GlobalProvider, useGlobalContext } from "@/context/GlobalContext";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -50,6 +51,7 @@ export default function RootLayout({ children  }) {
             <Offerlabel/>
             <Header />
             {children}
+            <SpeedInsights />
             <Footer />
             </GlobalProvider>
           </StoreProvider>

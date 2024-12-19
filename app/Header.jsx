@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import Text from "@/components/Text";
 import { ModeToggle } from "@/components/mode-toggle";
 import Mobilemenu from "./mobile-menu";
 import MegaMenu from "./mega-menu";

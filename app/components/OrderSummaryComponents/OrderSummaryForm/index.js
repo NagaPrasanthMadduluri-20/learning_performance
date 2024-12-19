@@ -50,11 +50,10 @@ const workpositions = [
 //   { value: "Chennai", label: "Chennai" },
 // ];
 
-
 // Dynamically import react-select
 const Select = lazy(() => import("react-select"));
 
-const OrderSummaryForm = ({ formType, cartvalue,  proforma}) => {
+const OrderSummaryForm = ({ formType, cartvalue, proforma }) => {
   const [isSelectLoaded, setIsSelectLoaded] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
@@ -62,34 +61,35 @@ const OrderSummaryForm = ({ formType, cartvalue,  proforma}) => {
   const { toast } = useToast();
   const router = useRouter();
 
-    // Transform countries for react-select
-    const countryOptions = useMemo(() => 
-      appData.countries.map(country => ({
+  // Transform countries for react-select
+  const countryOptions = useMemo(
+    () =>
+      appData.countries.map((country) => ({
         value: country.name,
-        label: country.name
-      })), 
-      []
-    );
-  
-    // Transform cities based on selected country
-    const cityOptions = useMemo(() => {
-      if (!selectedCountry) return [];
-      
-      const country = appData.countries.find(c => c.name === selectedCountry.value);
-      return country ? 
-        country.cities.map(city => ({
-          value: city.name,
-          label: city.name
-        })) : 
-        [];
-    }, [selectedCountry]);
+        label: country.name,
+      })),
+    []
+  );
 
+  // Transform cities based on selected country
+  const cityOptions = useMemo(() => {
+    if (!selectedCountry) return [];
+
+    const country = appData.countries.find(
+      (c) => c.name === selectedCountry.value
+    );
+    return country
+      ? country.cities.map((city) => ({
+          value: city.name,
+          label: city.name,
+        }))
+      : [];
+  }, [selectedCountry]);
 
   const handleAlternateDetails = (e) => {
     e.preventDefault();
     setIsVisible(!isVisible);
   };
-
 
   const defaultValues = {
     firstname: "",
@@ -128,11 +128,11 @@ const OrderSummaryForm = ({ formType, cartvalue,  proforma}) => {
   };
 
   const onSubmit = async (data) => {
-      // Dynamically import both the component and its styles
-      if (!isSelectLoaded) {
-        await Promise.all([import("react-select")]);
-        setIsSelectLoaded(true);
-      }
+    // Dynamically import both the component and its styles
+    if (!isSelectLoaded) {
+      await Promise.all([import("react-select")]);
+      setIsSelectLoaded(true);
+    }
     setIsSubmitting(true);
     try {
       await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -145,10 +145,10 @@ const OrderSummaryForm = ({ formType, cartvalue,  proforma}) => {
         description: "Your data has been successfully submitted!",
         variant: "success",
       });
-    
+
       form.reset();
       setIsVisible(false);
-      router.replace('/proforma-success');
+      router.replace("/proforma-success");
     } catch (error) {
       console.error("Form submission failed:", error);
       toast({
@@ -160,7 +160,7 @@ const OrderSummaryForm = ({ formType, cartvalue,  proforma}) => {
       setIsSubmitting(false);
     }
   };
-  
+
   return (
     <div className="py-10">
       <Card className="shadow-lg">
@@ -269,42 +269,42 @@ const OrderSummaryForm = ({ formType, cartvalue,  proforma}) => {
                     render={({ field }) => (
                       <FormItem>
                         <Suspense
-                      fallback={
-                        <select className="border-2 border-gray-200 h-11 focus-visible:ring-0 focus-visible:ring-offset-0 py-0 px-2 w-full text-[14px] font-montserrat rounded-md text-gray-500">
-                          <option value="" disabled>
-                          Select the country*
-                          </option>
-                        </select>
-                      }
-                    >
-                        <Select
-                          {...field}
-                          options={countryOptions}
-                          isMulti={false}
-                          placeholder="Select the country*"
-                          className="rounded-2xl h-auto py-1 font-montserrat text-[14px] focus-visible:ring-0 focus-visible:ring-offset-0"
-                          instanceId="select-course"
-                          styles={customStyles}
-                          onChange={(selectedOption) => {
-                            // Use setValue to update the form value
-                            form.setValue('country', selectedOption, { 
-                              shouldValidate: true 
-                            });
-                            
-                            // Update local state for cities
-                            setSelectedCountry(selectedOption);
-                            
-                            // Reset city selection when country changes
-                            form.setValue('city', null);
-                          }}
-                           // Optional: Load styles when interacted
-                       onMenuOpen={async () => {
-                        if (!isSelectLoaded) {
-                          setIsSelectLoaded(true);
-                        }
-                      }}
-                          value={form.watch('country')} // Use watch to get current value
-                        />
+                          fallback={
+                            <select className="border-2 border-gray-200 h-11 focus-visible:ring-0 focus-visible:ring-offset-0 py-0 px-2 w-full text-[14px] font-montserrat rounded-md text-gray-500">
+                              <option value="" disabled>
+                                Select the country*
+                              </option>
+                            </select>
+                          }
+                        >
+                          <Select
+                            {...field}
+                            options={countryOptions}
+                            isMulti={false}
+                            placeholder="Select the country*"
+                            className="rounded-2xl h-auto py-1 font-montserrat text-[14px] focus-visible:ring-0 focus-visible:ring-offset-0"
+                            instanceId="select-course"
+                            styles={customStyles}
+                            onChange={(selectedOption) => {
+                              // Use setValue to update the form value
+                              form.setValue("country", selectedOption, {
+                                shouldValidate: true,
+                              });
+
+                              // Update local state for cities
+                              setSelectedCountry(selectedOption);
+
+                              // Reset city selection when country changes
+                              form.setValue("city", null);
+                            }}
+                            // Optional: Load styles when interacted
+                            onMenuOpen={async () => {
+                              if (!isSelectLoaded) {
+                                setIsSelectLoaded(true);
+                              }
+                            }}
+                            value={form.watch("country")} // Use watch to get current value
+                          />
                         </Suspense>
                         <FormMessage className="text-[12px] !mt-0" />
                       </FormItem>
@@ -315,29 +315,43 @@ const OrderSummaryForm = ({ formType, cartvalue,  proforma}) => {
                     control={form.control}
                     render={({ field }) => (
                       <FormItem>
-                        <Select
-                          {...field}
-                          options={cityOptions}
-                          isMulti={false}
-                          placeholder="Select the City*"
-                          className="rounded-2xl h-auto py-1 font-montserrat text-[14px] focus-visible:ring-0 focus-visible:ring-offset-0"
-                          instanceId="select-course"
-                          styles={customStyles}
-                       
-                          onChange={(selectedOption) => {
-                            form.setValue('city', selectedOption, { 
-                              shouldValidate: true 
-                            });
-                          }}
-                          value={form.watch('city')}
-                          isDisabled={!selectedCountry}
-                        />
+                        <Suspense
+                          fallback={
+                            <select className="border-2 border-gray-200 h-11 focus-visible:ring-0 focus-visible:ring-offset-0 py-0 px-2 w-full text-[14px] font-montserrat rounded-md text-gray-500">
+                              <option value="" disabled>
+                                Select the City*
+                              </option>
+                            </select>
+                          }
+                        >
+                          <Select
+                            {...field}
+                            options={cityOptions}
+                            isMulti={false}
+                            placeholder="Select the City*"
+                            className="rounded-2xl h-auto py-1 font-montserrat text-[14px] focus-visible:ring-0 focus-visible:ring-offset-0"
+                            instanceId="select-course"
+                            styles={customStyles}
+                            onChange={(selectedOption) => {
+                              form.setValue("city", selectedOption, {
+                                shouldValidate: true,
+                              });
+                            }}
+                            onMenuOpen={async () => {
+                              if (!isSelectLoaded) {
+                                setIsSelectLoaded(true);
+                              }
+                            }}
+                            value={form.watch("city")}
+                            isDisabled={!selectedCountry}
+                          />
+                        </Suspense>
                         <FormMessage className="text-[12px] !mt-0" />
                         {!selectedCountry && (
-                        <FormMessage className="text-[12px] text-gray-500 !m-0 !p-0">
-                          Please select a country first
-                        </FormMessage>
-                      )}
+                          <FormMessage className="text-[12px] text-gray-500 !m-0 !p-0">
+                            Please select a country first
+                          </FormMessage>
+                        )}
                       </FormItem>
                     )}
                   />
@@ -437,15 +451,25 @@ const OrderSummaryForm = ({ formType, cartvalue,  proforma}) => {
                       control={form.control}
                       render={({ field }) => (
                         <FormItem>
-                          <Select
-                            {...field}
-                            options={countryOptions}
-                            isMulti={false}
-                            placeholder="Select the Billing country*"
-                            className="rounded-2xl h-auto py-1 font-montserrat text-[14px] focus-visible:ring-0 focus-visible:ring-offset-0"
-                            instanceId="select-course"
-                            styles={customStyles}
-                          />
+                          <Suspense
+                            fallback={
+                              <select className="border-2 border-gray-200 h-11 focus-visible:ring-0 focus-visible:ring-offset-0 py-0 px-2 w-full text-[14px] font-montserrat rounded-md text-gray-500">
+                                <option value="" disabled>
+                                  Select the Billing country*
+                                </option>
+                              </select>
+                            }
+                          >
+                            <Select
+                              {...field}
+                              options={countryOptions}
+                              isMulti={false}
+                              placeholder="Select the Billing country*"
+                              className="rounded-2xl h-auto py-1 font-montserrat text-[14px] focus-visible:ring-0 focus-visible:ring-offset-0"
+                              instanceId="select-course"
+                              styles={customStyles}
+                            />
+                          </Suspense>
                           <FormMessage className="text-[12px] !mt-0" />
                         </FormItem>
                       )}
@@ -462,16 +486,16 @@ const OrderSummaryForm = ({ formType, cartvalue,  proforma}) => {
                     )}
                     {cartvalue && proforma ? (
                       <Button
-                      // onClick={handleDownloadClick}
-                      disabled={isSubmitting}
-                      type="submit"
-                      className="bg-green-500 text-primary-foreground h-9 hover:bg-green-500"
-                    >
-                      Download Proforma Invoice <MoveRight className="ml-3" />
-                    </Button>
-                  ) : (
-                    ""
-                  )}
+                        // onClick={handleDownloadClick}
+                        disabled={isSubmitting}
+                        type="submit"
+                        className="bg-green-500 text-primary-foreground h-9 hover:bg-green-500"
+                      >
+                        Download Proforma Invoice <MoveRight className="ml-3" />
+                      </Button>
+                    ) : (
+                      ""
+                    )}
                   </div>
                 </div>
 

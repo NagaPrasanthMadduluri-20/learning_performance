@@ -1,6 +1,4 @@
 import Container from "@/components/Container";
-import React from "react";
-
 import ExpandableContent from "@/app/components/ExpandableComponent";
 import Text from "@/components/Text";
 import Link from "next/link";
