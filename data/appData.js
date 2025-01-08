@@ -271,7 +271,7 @@ export const appData = {
       status: true,
     },
   ],
-   countries: [
+   countries1: [
     {
       id: 61,
       name: "India",
@@ -571,7 +571,7 @@ export const appData = {
       ],
     },
   ],
-  countries1: [
+  countries: [
     {
       id: 24,
       name: "Albania",

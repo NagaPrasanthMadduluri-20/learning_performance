@@ -177,6 +177,7 @@
     @apply bg-gray-100 dark:bg-lowcontrastbackground text-foreground dark:text-primary-foreground transition duration-150 ease-in-out;
   }
 
+ 
 
 .custom-scrollbar {
   scrollbar-width: thin;
