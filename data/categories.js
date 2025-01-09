@@ -37,98 +37,248 @@ export const categoriesData = {
   courses: [
     {
       slug: "pmi-acp-certification-training",
-      name: "PMI-ACP Certification Training",
-      category: "agile-certification-courses",
+      name: "PMI-ACP Exam Prep",
+      category: "Agile Project Management",
     },
     {
-      slug: "pmp-certification-training",
-      name: "PMP-Certification Training",
-      category: "project-management-certification-courses",
+      slug: "safe-scrum-master-training",
+      name: "SAFe Scrum Master",
+      category: "Agile Project Management",
     },
     {
-      slug: "capm-certification-training",
-      name: "CAPM Certification Training",
-      category: "project-management-certification-courses",
+      slug: "agile-scrum-foundation-certification-training",
+      name: "Agile Scrum Foundation",
+      category: "Agile Project Management",
     },
     {
-      slug: "prince2-foundation-practitioner-certification-training",
-      name: "PRINCE2 Foundation & Practitioner Certification Training",
-      category: "project-management-certification-courses",
+      slug: "agile-scrum-master",
+      name: "Agile Scrum Master (ASM)",
+      category: "Agile Project Management",
     },
     {
-      slug: "devops-professional-training",
-      name: "DevOps Professional Training",
-      category: "devops-certification-courses",
+      slug: "safe-for-government-training",
+      name: "SAFe for Government",
+      category: "Agile Project Management",
     },
     {
-      slug: "devops-foundation-certification-training",
-      name: "DevOps Foundation Certification Training",
-      category: "devops-certification-courses",
+      slug: "scrum-fundamentals",
+      name: "Scrum Fundamentals",
+      category: "Agile Project Management",
     },
     {
       slug: "csm-certification-training",
-      name: "CSM Certification Training",
-      category: "agile-certification-courses",
-    },
-    {
-      slug: "prince2-foundation-practitioner-certification-training",
-      name: "Prince 2 Foundation",
-      category: "project-management-certification-courses",
-    },
-    {
-      slug: "change-management-certification",
-      name: "Change Management Certification",
-      category: "project-management-certification-courses",
-    },
-    {
-      slug: "project-management-fundamentals-training",
-      name: "project Management Fundamentals",
-      category: "project-management-certification-courses",
-    },
-    {
-      slug: "project-management-fundamentals-training",
-      name: "project Management Fundamentals",
-      category: "project-management-certification-courses"
-    },    
-    {
-      slug: "lean-six-sigma-yellow-belt-certification-training",
-      name: "Lean Six Sigma Yellow Belt Certification Training",
-      category: "six-sigma-certification-management"
-    },
-    {
-      slug: "lean-six-sigma-green-belt-certification-training",
-      name: "Lean Six Sigma Green Belt Certification Training",
-      category: "six-sigma-certification-management"
-    } ,   
-    {
-      slug: "cobit-5-certification",
-      name: "COBIT 5 Certification",
-      category: "it-governance-certification-courses"
-    },
-    {
-      slug: "7-qc-tools-training",
-      name: "7 QC Tools Training",
-      category: "quality-management-courses"
-    },
-    {
-      slug: "kaizen-training",
-      name: "Kaizen",
-      category: "lean-management-courses"
+      name: "Certified ScrumMaster (CSM)",
+      category: "Agile Project Management",
     },
     {
       slug: "leading-safe-training",
       name: "Leading SAFe 6.0 Certification",
-      category: "agile-certification-courses"
+      category: "Agile Project Management",
+    },
+    {
+      slug: "cspo-certification-training",
+      name: "Certified Scrum Product Owner (CSPO)",
+      category: "Agile Project Management",
+    },
+    {
+      slug: "safe-for-teams-training",
+      name: "SAFe for Teams",
+      category: "Agile Project Management",
+    },
+    {
+      slug: "agile-pm-certification",
+      name: "AgilePM Foundation and Practitioner Certification",
+      category: "Agile Project Management",
+    },
+    {
+      slug: "kanban-training",
+      name: "Kanban Training",
+      category: "Agile Project Management",
+    },
+    {
+      slug: "change-management-certification",
+      name: "Change management Foundation and Practitioner Certification",
+      category: "Project Management",
+    },
+    {
+      slug: "lean-project-management",
+      name: "Lean Project Management",
+      category: "Project Management",
+    },
+    {
+      slug: "pmp-certification-training",
+      name: "PMP Certification",
+      category: "Project Management",
+    },
+    {
+      slug: "project-management-fundamentals-training",
+      name: "Project Management Fundamentals",
+      category: "Project Management",
+    },
+    {
+      slug: "capm-certification-training",
+      name: "CAPM Exam Prep",
+      category: "Project Management",
+    },
+    {
+      slug: "microsoft-project-training",
+      name: "Microsoft Project Training",
+      category: "Project Management",
+    },
+    {
+      slug: "oracle-primavera-p6-certification-training",
+      name: "Oracle Primavera P6 Certification Training",
+      category: "Project Management",
+    },
+    {
+      slug: "prince2-agile-foundation-practitioner-certification-training",
+      name: "PRINCE2 Agile Foundation and Practitioner Certification",
+      category: "Project Management",
+    },
+    {
+      slug: "jira-certification-training",
+      name: "JIRA Certification Training",
+      category: "Project Management",
+    },
+    {
+      slug: "prince2-foundation-practitioner-certification-training",
+      name: "PRINCE2 Foundation & Practitioner Certification (7th Edition)",
+      category: "Project Management",
+    },
+    {
+      slug: "business-analysis-certification",
+      name: "Business Analysis Foundation and Practitioner Certification",
+      category: "Project Management",
+    },
+    {
+      slug: "itil-4-foundation",
+      name: "ITIL 4 Foundation",
+      category: "IT Service Management",
+    },
+    {
+      slug: "verism-foundation-training",
+      name: "VeriSM™ Foundation",
+      category: "IT Service Management",
+    },
+    {
+      slug: "siam-foundation",
+      name: "SIAM Foundation",
+      category: "IT Service Management",
+    },
+    {
+      slug: "siam-professional",
+      name: "SIAM Professional",
+      category: "IT Service Management",
+    },
+    {
+      slug: "lean-six-sigma-yellow-belt-certification-training",
+      name: "Lean Six Sigma Yellow Belt",
+      category: "Quality Management",
+    },
+    {
+      slug: "lean-six-sigma-green-belt-certification-training",
+      name: "Lean Six Sigma Green Belt",
+      category: "Quality Management",
+    },
+    {
+      slug: "value-stream-mapping-training",
+      name: "Value Stream Mapping",
+      category: "Quality Management",
+    },
+    {
+      slug: "poka-yoke-training",
+      name: "Poka Yoke",
+      category: "Quality Management",
+    },
+    {
+      slug: "kaizen-training",
+      name: "Kaizen",
+      category: "Quality Management",
+    },
+    {
+      slug: "bpm-and-six-sigma-training",
+      name: "BPM and Six Sigma",
+      category: "Quality Management",
+    },
+    {
+      slug: "minitab-essentials-training",
+      name: "Minitab Essentials",
+      category: "Quality Management",
+    },
+    {
+      slug: "six-sigma-awareness-training",
+      name: "Six Sigma Awareness",
+      category: "Quality Management",
+    },
+    {
+      slug: "design-for-six-sigma-training",
+      name: "Design for Six Sigma",
+      category: "Quality Management",
     },
     {
       slug: "lean-fundamentals-training",
       name: "Lean Fundamentals",
-      category: "lean-management-courses"
+      category: "Quality Management",
     },
     {
       slug: "lean-it-training",
       name: "Lean IT",
-      category: "lean-management-courses"
+      category: "Quality Management",
     },
-  ]
-}
+    {
+      slug: "quality-by-design-training",
+      name: "Quality by Design",
+      category: "Quality Management",
+    },
+    {
+      slug: "quality-function-deployment-training",
+      name: "Quality Function Deployment",
+      category: "Quality Management",
+    },
+    {
+      slug: "rca-through-six-sigma-training",
+      name: "RCA through Six Sigma",
+      category: "Quality Management",
+    },
+    {
+      slug: "7-qc-tools-training",
+      name: "7 QC Tools Training",
+      category: "Quality Management",
+    },
+    {
+      slug: "lean-six-sigma-black-belt-certification-training",
+      name: "Lean Six Sigma Black Belt",
+      category: "Quality Management",
+    },
+    {
+      slug: "devops-foundation-certification-training",
+      name: "DevOps Foundation",
+      category: "DevOps",
+    },
+    {
+      slug: "devops-master-training",
+      name: "DevOps Master",
+      category: "DevOps",
+    },
+    {
+      slug: "devops-professional-training",
+      name: "DevOps Professional",
+      category: "DevOps",
+    },
+    {
+      slug: "continuous-delivery-architecture-training",
+      name: "Continuous Delivery Architecture",
+      category: "DevOps",
+    },
+    {
+      slug: "cgeit-training",
+      name: "CGEIT",
+      category: "IT Security and Governance",
+    },
+    {
+      slug: "crisc-certification-training",
+      name: "CRISC",
+      category: "IT Security and Governance",
+    },
+  ],
+};
