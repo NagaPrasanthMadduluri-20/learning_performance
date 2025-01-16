@@ -20,6 +20,8 @@ const nextConfig = {
         hostname: "stagingbeta.invensislearning.com",
       },
     ],
+    loader: 'custom',
+    loaderFile: './lib/CloudflareLoader.js',
   },
 };
 

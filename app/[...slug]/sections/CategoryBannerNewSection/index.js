@@ -8,6 +8,7 @@ import SocialMediaLinks from "../SocialMediaLinks";
 import BreadCrumb from "@/app/components/BreadCrumb/BreadCrumb";
 import ScrollButton from "@/app/components/ScrollButton";
 import { useTheme } from "next-themes";
+import CustomImage from "@/components/CustomImage";
 
 const CategoryBannerNew = ({ BannerData, additionalData }) => {
   const { contents } = BannerData;
@@ -63,7 +64,7 @@ const CategoryBannerNew = ({ BannerData, additionalData }) => {
                     contents.categorybanners.length > 0 &&
                     contents.categorybanners[0]["Accrediations"] !== null &&
                     contents.categorybanners.map((accrediate, index) => (
-                      <Image
+                      <CustomImage
                         alt={accrediate.AccrediationsTitle}
                         src={accrediate.Accrediations}
                         key={index}

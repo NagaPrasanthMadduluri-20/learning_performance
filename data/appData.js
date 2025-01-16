@@ -271,7 +271,7 @@ export const appData = {
       status: true,
     },
   ],
-   countries1: [
+   countries: [
     {
       id: 61,
       name: "India",
@@ -547,31 +547,9 @@ export const appData = {
         },
       ],
     },
-    {
-      id: 74,
-      name: "Singapore",
-      code: "sg",
-      dial_code: "65",
-      country_flag: "SG-32.png",
-      currency_value: "SGD",
-      time_zone: "SGT",
-      weekend: "Sunday",
-      taxes: [],
-      cities: [
-        {
-          id: 129,
-          country_id: 74,
-          state_id: 74,
-          name: "Singapore",
-          short_name: "singapore",
-          deleted_at: null,
-          status: true,
-          time_zone_reference_value_id: 309,
-        },
-      ],
-    },
   ],
-  countries: [
+  
+  countries1: [
     {
       id: 24,
       name: "Albania",
